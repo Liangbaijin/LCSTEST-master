@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+// 关卡信息
+message NewPlayerCareerCheckpointInfo {
+	// 关卡id
+	required int32 checkpoint = 1;
+	// 
+	required string star = 2;
+	// 
+	required int32 passCount = 3;
+	// 
+	required int32 buyPassCount = 4;
+}

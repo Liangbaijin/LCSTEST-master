@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+//章节信息
+message StoryChapter{
+	//章节序号
+	required int32 id = 1;
+	//第1档星级礼包状态 0未领取(包括可领取、不可领取) 1已领取
+	required int32 packageStates1 = 2;
+	//第2档
+	required int32 packageStates2 = 3;
+	//第3档
+	required int32 packageStates3 = 4;
+	//最终通关章节奖励 0未领取 1已领取
+	required int32 finalReward = 5;
+}

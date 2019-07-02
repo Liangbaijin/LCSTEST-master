@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+// 关键球员
+message TeamKeyPlayer {
+
+	//职责1点球 2角球 3任意球 4队长
+    required int32 type = 1;
+
+	//球员id
+    required string content = 2;
+    
+}

@@ -1,0 +1,63 @@
+syntax = "proto2";
+
+import "managerLable.proto";
+import "otherUserBattle.proto";
+
+message OtherTeamInfo{
+	//俱乐部队徽
+	required int32 clubIcon = 1;
+	
+	//经理人名字
+	required string managerName = 2;
+	
+	//标签列表
+	optional ManagerLable lableList = 3;
+	
+	//经理人等级
+	required int32 level = 4;
+	
+	//经理人经验
+	required int32 experience = 5;
+	
+	//战力
+	required int32 zhanli = 6;
+	
+	//建队日期
+	required string registDate = 7;
+	
+	//俱乐部(工会)
+	required int32 club = 8;
+	
+	//最近登录时间(分钟)
+	required int32 latelyLoginTime = 9;
+	
+	//联赛级别1 超级 2甲级 3 乙级 4 丙级 5业余
+	required int32 leagueLevel = 10;
+	
+	//天梯排名(-1:表示没有进入排位赛)
+	required string tiantiRank = 11;
+	
+	//成就图标1
+	required int32 achieveIcon1 = 12;
+	
+	//成就图标2
+	required int32 achieveIcon2 = 13;
+	
+	//成就图标3
+	required int32 achieveIcon3 = 14;
+	
+	//主场球衣
+	required int32 homeFieldPoloShirt = 15;
+    
+	//客场球衣
+    required int32 visitingFieldPoloShirt = 16;
+	
+	//阵容
+	required OtherUserBattle otherUserBattle = 17;
+	
+	//VIP等级
+	required int32 vipLevel = 18;
+
+	//公会名
+	optional string guildName = 19;
+}

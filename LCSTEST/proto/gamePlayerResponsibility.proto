@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+message GamePlayerResponsibility {
+	//职责类型职责(1队长  2任意球   3点球   4角球（左）  5角球（右））
+	optional int32 type = 1;
+	
+	//位置
+	optional int32 position = 2;
+}

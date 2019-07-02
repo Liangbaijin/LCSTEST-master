@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+message GameUserChampionRoad {
+	
+	required int32 id = 1;
+	// 挑战次数
+	required int32 challengeCount = 2;
+	// 已通关的检查点
+	required int32 passedCheckPoints = 3; 
+	// 完美通关的关卡
+	repeated int32 perfectPassedCheckPoints = 4;
+}

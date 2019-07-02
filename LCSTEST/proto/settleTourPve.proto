@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+import "teaminfoAndPropListResp.proto";
+
+// 结算结果-巡回赛
+message SettleTourPve{
+
+	//判断游戏是否结束  1结束  0不结束
+	optional int32 over = 2;
+	
+	optional TeamInfoAndPropListRespVo teamInfoAndPropListRespVo = 1;
+	
+	//挑战结果 1成功 0失败
+	required int32 result = 3;
+}

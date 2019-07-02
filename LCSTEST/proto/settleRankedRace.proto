@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+import "gameRankedRace.proto";
+import "propResp.proto";
+import "gameTeamInfo.proto";
+
+// 结算结果-排名赛
+message SettleRankedRace{
+
+	//暂定 返回code  1成功  0失败
+	optional int32 code = 1;
+	
+	//个人信息
+	optional GameRankedRace GameRankedRace = 2;
+	
+	//奖励列表
+	repeated PropRespVo propRespVo = 3;
+	
+	//玩家信息
+	required GameTeamInfo gameTeamInfo = 4;
+}

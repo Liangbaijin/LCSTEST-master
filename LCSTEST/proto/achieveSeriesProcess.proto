@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+message AchieveSeriesProcess {
+    //系列id，1联赛达人徽章;2联赛冠军徽章;3足协杯达人徽章;4足协杯冠军徽章;5分享达人徽章
+    required int32 seriesId = 1;
+    //进度
+    required int32 process = 2;
+}

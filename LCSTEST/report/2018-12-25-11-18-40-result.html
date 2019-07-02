@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LCS接口测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>LCS接口测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-12-25 11:18:40</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:00.002501</p>
+<p class='attribute'><strong>Status:</strong> Pass 2 Failure 2 Error 6</p>
+
+<p class='description'>测试用例结果</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_公会.MyTest</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_DoDonation</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        error</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: 正在建立初始化连接......
+
+用例执行失败原因: 您今日已捐赠过，请明日再来！
+
+该条用例执行完毕,启动退出程序
+Traceback (most recent call last):
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_公会.py", line 35, in test_DoDonation
+    raise e
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_公会.py", line 32, in test_DoDonation
+    self.assertEqual(main.result[7].propRespVo.propNum,1500)
+AttributeError: 'str' object has no attribute 'propRespVo'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_培养.MyTest</td>
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c2',3)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_EquipUpLevel</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        fail</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: 正在建立初始化连接......
+
+用例执行失败原因: equipmentRespVo {
+  equipRespVo {
+    id: 4185
+    comEquipId: 100035
+    level: 9
+    star: 2
+    skill1Eid: 0
+    skill1Level: 0
+    skill2Eid: 0
+    skill2Level: 0
+    playerId: 114686
+    gainTime: "2018-12-16 08:18:53"
+    addType1: 1
+    addValueType1: 0
+    addValue1: 51
+    addType2: 2
+    addValueType2: 0
+    addValue2: 17
+    addType3: 0
+    addValueType3: 0
+    addValue3: 0
+  }
+  gameTeamInfoRespVo {
+    coin: 9998024
+    diamond: 99689
+  }
+  aPlayerId {
+    instance {
+      playerId: 114686
+      commonPlayerId: 10000442
+      uid: "1-10014122"
+      tineng: 100
+      zhuangtai: 2
+      shangbing: 1
+      status: 1
+      star: 0
+      gradation: 0
+      level: 50
+      skill1Grade: 0
+      skill2Grade: 0
+      skill3Grade: 0
+      serialNumber: 10
+      exprience: 0
+      shangbingDay: 0
+      shangbingTime: 1544919465
+      replyTime: 1545580038
+      gainTime: 1544919465
+      isShoot: 0
+      tacitUnderstandingLevel1: 0
+      tacitUnderstandingExp1: 0
+      newPlayer: 0
+      tacitUnderstandingLevel2: 0
+      tacitUnderstandingExp2: 0
+      tacitUnderstandingLevel3: 0
+      tacitUnderstandingExp3: 0
+      tacitUnderstandingLevel4: 0
+      tacitUnderstandingExp4: 0
+    }
+    attr {
+      shemen: 123
+      chuanqiu: 98
+      pandai: 70
+      jiewei: 37
+      qiangduan: 25
+      dingren: 47
+      pujiu: 0
+      chuji: 0
+      kaiqiu: 0
+      fanying: 0
+      shiye: 0
+      zhanwei: 0
+    }
+    zhanli: 436
+    positionSeries: 0
+  }
+}
+
+
+该条用例执行完毕,启动退出程序
+Traceback (most recent call last):
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_培养.py", line 35, in test_EquipUpLevel
+    raise e
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_培养.py", line 32, in test_EquipUpLevel
+    self.assertEqual(main.result[18].equipmentRespVo.equipRespVo.level, 2)
+AssertionError: 9 != 2
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_PlayerUpgrade</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: 正在建立初始化连接......
+
+
+该条用例执行完毕,启动退出程序
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_PlayerUpstar</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.3')" >
+        error</a>
+
+    <div id='div_ft2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.3: 正在建立初始化连接......
+
+用例执行失败原因: 球员升星超过上限
+
+该条用例执行完毕,启动退出程序
+Traceback (most recent call last):
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_培养.py", line 28, in test_PlayerUpstar
+    raise e
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_培养.py", line 25, in test_PlayerUpstar
+    self.assertEqual(main.result[17].playerRespVo.instance.star, 1)
+AttributeError: 'str' object has no attribute 'playerRespVo'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_活动.MyTest</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_levelpackageaward</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        error</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: 正在建立初始化连接......
+
+用例执行失败原因: 奖励已领取
+
+该条用例执行完毕,启动退出程序
+Traceback (most recent call last):
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_活动.py", line 22, in test_levelpackageaward
+    raise e
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_活动.py", line 19, in test_levelpackageaward
+    self.assertEqual(main.result[15].propRespVo[1].propId,1005)
+AttributeError: 'str' object has no attribute 'propRespVo'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_登录抽卡签到.MyTest</td>
+    <td>5</td>
+    <td>1</td>
+    <td>1</td>
+    <td>3</td>
+    <td><a href="javascript:showClassDetail('c4',5)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_AddSignin</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        error</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: 正在建立初始化连接......
+
+用例执行失败原因: 禁止补签，已达到补签上限
+
+该条用例执行完毕,启动退出程序
+Traceback (most recent call last):
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_登录抽卡签到.py", line 69, in test_AddSignin
+    raise e
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_登录抽卡签到.py", line 66, in test_AddSignin
+    self.assertEquals(main.result[12].teamInfoAndPropListRespVo.gameTeamInfo.diamond + 80,main.result[13].teamInfoAndPropListRespVo.gameTeamInfo.diamond)
+AttributeError: 'str' object has no attribute 'teamInfoAndPropListRespVo'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_BuyVipPackage</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.2')" >
+        error</a>
+
+    <div id='div_ft4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.2: 正在建立初始化连接......
+
+用例执行失败原因: vip礼包档位已购买
+
+该条用例执行完毕,启动退出程序
+Traceback (most recent call last):
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_登录抽卡签到.py", line 55, in test_BuyVipPackage
+    raise e
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_登录抽卡签到.py", line 52, in test_BuyVipPackage
+    main.result[11].gameTeamInfo.diamond)
+AttributeError: 'str' object has no attribute 'gameTeamInfo'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Mall_Buygoods</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.3')" >
+        pass</a>
+
+    <div id='div_pt4.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.3: 正在建立初始化连接......
+
+
+该条用例执行完毕,启动退出程序
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_RecruitPlayer</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.4')" >
+        fail</a>
+
+    <div id='div_ft4.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.4: 正在建立初始化连接......
+
+用例执行失败原因: recruitClickRespVo {
+  id: 2
+  position: 2
+  diamond: 99699
+  coin: 9999999
+  remainCdTime: 0
+  remainfreeCount: 0
+  playerList {
+    instance {
+      playerId: 115187
+      commonPlayerId: 10000508
+      uid: "1-10014122"
+      tineng: 100
+      zhuangtai: 1
+      shangbing: 1
+      status: 0
+      star: 0
+      gradation: 0
+      level: 1
+      skill1Grade: 0
+      skill2Grade: 0
+      skill3Grade: 0
+      exprience: 0
+      shangbingDay: 0
+      replyTime: 1545580036
+      gainTime: 1545580036
+      isShoot: 0
+      tacitUnderstandingLevel1: 0
+      tacitUnderstandingExp1: 0
+      newPlayer: 1
+      tacitUnderstandingLevel2: 0
+      tacitUnderstandingExp2: 0
+      tacitUnderstandingLevel3: 0
+      tacitUnderstandingExp3: 0
+      tacitUnderstandingLevel4: 0
+      tacitUnderstandingExp4: 0
+    }
+    attr {
+      shemen: 69
+      chuanqiu: 65
+      pandai: 70
+      jiewei: 37
+      qiangduan: 36
+      dingren: 44
+      pujiu: 0
+      chuji: 0
+      kaiqiu: 0
+      fanying: 0
+      shiye: 0
+      zhanwei: 0
+    }
+    zhanli: 360
+    positionSeries: 0
+  }
+}
+exchangeCard {
+  propId: 1045
+  propType: 5
+  propNum: 10
+}
+
+
+该条用例执行完毕,启动退出程序
+Traceback (most recent call last):
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_登录抽卡签到.py", line 40, in test_RecruitPlayer
+    raise e
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_登录抽卡签到.py", line 37, in test_RecruitPlayer
+    self.assertEqual(main.result[0].gameTeamInfoRespVo.diamond-1600,main.result[9].recruitClickRespVo.diamond)
+AssertionError: 98399 != 99699
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Signin</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.5')" >
+        error</a>
+
+    <div id='div_ft4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.5: 正在建立初始化连接......
+
+用例执行失败原因: 今日已经签到
+
+该条用例执行完毕,启动退出程序
+Traceback (most recent call last):
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_登录抽卡签到.py", line 62, in test_Signin
+    raise e
+  File "C:\Users\admin\PycharmProjects\LEA\LCS\testcase\test_登录抽卡签到.py", line 59, in test_Signin
+    self.assertEquals(main.result[11].gameTeamInfo.coin+10000,main.result[12].teamInfoAndPropListRespVo.gameTeamInfo.coin)
+AttributeError: 'str' object has no attribute 'gameTeamInfo'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>10</td>
+    <td>2</td>
+    <td>2</td>
+    <td>6</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

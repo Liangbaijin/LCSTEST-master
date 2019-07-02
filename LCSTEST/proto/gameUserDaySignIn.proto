@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+message GameUserDaySignIn {
+
+    //用户签到的次数
+    optional int32 day = 2;
+
+    //当天签到的状态 0未签到 1已签到
+    optional int32 status = 3;
+
+    //签到的时间
+    optional string updateTime = 4;
+
+    //当月补签次数
+    optional int32 addDay = 5;
+}

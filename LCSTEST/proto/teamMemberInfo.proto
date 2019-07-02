@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+import "playerInfo.proto";
+import "playerProperty.proto";
+import "playerSkill.proto";
+
+// 用户球员的所有信息
+message TeamMember{
+
+	optional PlayerInfo playerInfo = 1;
+
+	optional PlayerProperty playerProperty = 2;
+
+	repeated PlayerSkill playerSkills = 3;
+
+}

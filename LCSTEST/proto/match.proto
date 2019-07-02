@@ -1,0 +1,552 @@
+syntax = "proto2";
+
+import "team.proto";
+import "teamClient.proto";
+import "teamFormation.proto";
+import "teamTactics.proto";
+import "teamKeyPlayer.proto";
+import "teamChangingPlayers.proto";
+import "roundResult.proto";
+import "gameTeamInfo.proto";
+import "settle.proto";
+import "matchAim.proto";
+import "gamePlayerBattle.proto";
+import "gameUserTacticsInfo.proto";
+import "gamePlayerResponsibility.proto";
+import "gamePlayerInstanceBase.proto";
+import "extraMatchCondition.proto";
+import "teamFormationChangeStatus.proto";
+
+///////////////////////////////////////////游戏 -> 比赛/////////////////////////////
+
+// 建立比赛
+message LS2MS_BuildMatch{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+    // 该场比赛的赛事类型编号 具体赛事编号见文件: doc\比赛编号.xls
+    required int32 matchType = 2;
+
+    // 用户id
+    optional string uid = 3;
+
+    // 是否需要快速返回一整场比赛的数据(重新计算一场比赛时用)
+    optional bool needAllDataAtOnce = 4 [default = false];
+
+    //随机数种子
+    required int64 seed = 5;
+
+    // 主队
+    required Team home = 6;
+
+    // 客队
+    required Team visit = 7;
+	// 额外比赛启动条件
+    optional ExtraMatchCondition extraMatchCondition = 8;
+}
+
+// 改变阵型
+message LS2MS_ChangeFormation{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+    // 该场比赛的赛事类型 1联赛
+    required int32 matchType = 2;
+
+    // 用户id
+	optional string uid = 3;
+
+    // 改变阵型指令的回合数
+    optional string round = 4;
+
+    // 主客队标识(主队:0/客队：1)
+    required int32 teamFlag = 5;
+
+    // 玩家本场阵容
+    required TeamFormation teamFormation = 6;
+
+}
+
+// 改变战术
+message LS2MS_ChangeTactics{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+	// 该场比赛的赛事类型
+    required int32 matchType = 2;
+
+    // 用户id
+	optional string uid = 3;
+	
+	// 改变阵型指令
+    optional string round = 4;
+
+	// 主客队标识(主队:0/客队：1)
+    required int32 teamFlag = 5;
+	
+	//json格式字符串
+	required string originalTactics = 6;
+
+    // 玩家修改的战术项
+    repeated TeamTactics teamTactics = 7;
+
+}
+
+// 改变关键球员(职责)
+message LS2MS_ChangeKeyPlayer{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+	// 该场比赛的赛事类型 1联赛 2训练赛
+    required int32 matchType = 2;
+
+    // 用户id
+	optional string uid = 3;
+	
+	// 改变战术的回合数
+    optional string round = 4;
+
+    // 主客队标识(主队:0/客队：1)
+    optional int32 teamFlag = 5;
+
+    // 玩家本场修改的关键球员项
+    repeated TeamKeyPlayer teamKeyPlayer = 6;
+
+}
+
+// 客户端建立比赛完成后再次调用传递必要的缺失回合数据
+message LS2MS_PushFlow{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+    //该场比赛的赛事类型
+    required int32 matchType = 2;
+
+	// 用户uid
+	optional string uid = 3;
+}
+
+message LS2MS_RemainRounds{
+
+    // 比赛ID
+    required int32 matchId = 1;
+
+    //该场比赛的赛事类型
+    required int32 matchType = 2;
+
+    // 用户uid
+	optional string uid = 3;
+
+	// 回合信息
+	optional string roundInfo = 4;
+}
+
+// 判断玩家是否登陆参与比赛(暂时只作用于pvp)
+message LS2MS_MatchLogin {
+    
+    // 比赛ID
+    required int32 matchId = 1;
+
+    // 该场比赛的赛事类型
+    required int32 matchType = 2;
+
+    // 主客队标识(主队: 0/客队：1)
+	required int32 teamFlag = 3;
+
+	// 玩家是否参与(未参与比赛: 0/参与比赛: 1)
+	required int32 isLogin = 4;
+
+}
+
+// 删除一场比赛
+message LS2MS_KillMatch{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+    //该场比赛的赛事类型
+    required int32 matchType = 2;
+
+    // 用户uid
+	optional string uid = 3;
+
+    // 是否需要返回余下回合的比赛数据
+    required bool needAllDataAtOnce = 4 [default = false];
+
+}
+
+// 心跳请求
+message LS2MS_Heartbeat{
+
+}
+
+///////////////////////////////////////////比赛 -> 游戏/////////////////////////////
+
+// 告知游戏比赛建立完成
+message MS2LS_BuildMatch{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+    //该场比赛的赛事类型 1联赛
+    required int32 matchType = 2;
+
+    // 用户uid
+	optional string uid = 3;
+
+}
+
+// 告知游戏服务器比赛结束
+message MS2LS_EndMatch{
+    // 比赛ID
+    required int32 matchId = 1;
+
+    // 赛事类型
+    required int32 matchType = 2;
+
+    // 用户uid
+    optional string uid = 3;
+}
+
+// 改变阵型
+// 比赛服务器收到该请求会返回此次换人是否被允许
+message MS2LS_ChangeFormation{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+	// 该场比赛的赛事类型 1联赛
+    required int32 matchType = 2;
+
+    // 用户id
+	optional string uid = 3;
+
+    // 主客队标识(主队:0/客队：1)
+    required int32 teamFlag = 4;
+
+	// 返回的状态码 成功换人: 200; 换人名额用完: 40000;  换下球员不允许上场: 40001
+	optional int32 changeStatus = 5;
+
+    // 剩余可用换人次数
+    optional int32 remainSubstitutionNum = 6;
+
+}
+
+// 修改战术成功
+message MS2LS_ChangeTactics{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+	// 该场比赛的赛事类型
+    required int32 matchType = 2;
+
+    // 用户id
+	optional string uid = 3;
+
+}
+
+// 修改关键球员成功
+message MS2LS_ChangeKeyPlayer{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+	// 该场比赛的赛事类型 1联赛 2训练赛
+    required int32 matchType = 2;
+
+    // 用户id
+	optional string uid = 3;
+
+}
+
+// 每回合比赛推送数据, 如果有比赛状态的改变, 会传入对应项(比如新的阵容等)
+message MS2LS_RoundResult{
+
+    // 用户uid
+    optional string uid = 1;
+
+    // 回合数据
+	required RoundResult roundResult = 2;
+
+}
+
+
+// PushFlow返回的数据
+message MS2LS_PushFlow{
+
+    // 用户uid
+	optional string uid = 1;
+
+    // 累加回合数据(供客户端恢复)
+    required RoundResult roundResult = 2;
+
+    // 本场比赛总的允许换人次数
+	optional int32 allowedSubstitutionNum = 3;
+
+	// 主队剩余换人次数
+    optional int32 homeRemainSubstitutionNum = 4;
+
+	// 客队剩余换人次数
+    optional int32 visitRemainSubstitutionNum = 5;
+
+    // 主队阵型状态
+    optional TeamFormationChangeStatus homeTeamFormationStatus = 6;
+
+    // 客队阵型状态
+    optional TeamFormationChangeStatus visitTeamFormationStatus = 7;
+
+}
+
+message MS2LS_RemainRounds{
+    // 用户uid
+	optional string uid = 1;
+
+    // 回合数据
+	required RoundResult roundResult = 2;
+}
+
+// 删除一场比赛
+message MS2LS_KillMatch{
+
+	// 比赛ID
+    required int32 matchId = 1;
+
+    //该场比赛的赛事类型
+    required int32 matchType = 2;
+
+    // 用户uid
+	optional string uid = 3;
+
+    // 回合数据
+	optional RoundResult roundResult = 4;
+
+}
+
+message MS2LS_ERRORCODE{
+
+	//比赛id
+	required int32 matchId = 1;
+
+	//比赛类型
+	required int32 matchType = 2;
+
+	//错误code  未找到比赛: 40101;
+	required int32 code = 3;
+
+	//header
+	required int32 opCode = 4;
+    
+	//uid
+	optional string uid = 5;
+}
+
+// 心跳响应
+message MS2LS_Heartbeat{
+
+}
+
+
+///////////////////////////////////////////游戏 -> 客户端 /////////////////////////////
+
+// 球场数据
+message GS2C_ObtainData{
+    // 主队球队数据
+    optional TeamClient homeTeamClient = 1;
+	
+    // 主队OtherTeamInfo
+	optional GameTeamInfo homeTeamInfo = 2;
+
+    // 客队球队数据
+    optional TeamClient visitTeamClient = 3;
+	
+    // 客队OtherTeamInfo
+	optional GameTeamInfo visitTeamInfo = 4;
+}
+
+// PushFlow返回的缺失回合数据
+message GS2C_PushFlow{
+
+    // 累加回合数据(供客户端恢复)
+    //required RoundResultClient roundResultClient = 2;
+	required RoundResult roundResult = 1;
+	// 本场比赛总的允许换人次数
+	optional int32 allowedSubstitutionNum = 2;
+
+	// 主队剩余换人次数
+    optional int32 homeRemainSubstitutionNum = 3;
+
+	// 客队剩余换人次数
+    optional int32 visitRemainSubstitutionNum = 4;
+	
+	// 主队阵型状态
+    optional TeamFormationChangeStatus homeTeamFormationStatus = 5;
+
+    // 客队阵型状态
+    optional TeamFormationChangeStatus visitTeamFormationStatus = 6;
+
+}
+
+// 改变阵型职责
+// 比赛服务器收到该请求会返回此次换人是否被允许
+message GS2C_ChangeFormation{
+
+    // 剩余可用换人次数
+    optional int32 remainSubstitutionNum = 1;
+
+	// 玩家换人状态
+	//optional TeamChangingPlayers changePlayers = 2;
+
+}
+
+// 修改战术成功
+message GS2C_ChangeTactics{
+
+}
+
+// 每回合比赛推送数据, 如果有比赛状态的改变, 会传入对应项(比如新的阵容等)
+message GS2C_RoundResult{
+
+    // 回合数据
+	//required RoundResultClient roundResultClient = 1;
+	required RoundResult roundResult = 1;
+
+}
+
+// 结算
+message GS2C_FinishMatch{
+
+	// 结算结果
+	required Settle settle = 1;
+	
+	//主队总得分
+	required int32 homeScore = 2;
+	
+	//客队总得分
+	required int32 visitScore = 3;
+
+}
+
+//比赛结束后通知体能伤病和状态变化
+message GS2C_UpdateTineng{
+	repeated GamePlayerInstanceBase playerList = 1;
+}
+
+// pvp比赛已准备好，提醒客户端重新获取赛事列表，该接口由服务器主动推送
+message GS2C_BuildMatchReady{
+	//需要刷新的比赛页面
+	required int32 matchType = 1;
+}
+
+//跳过比赛
+message GS2C_RemainRounds{
+    // 用户uid
+	optional string uid = 1;
+
+    // 回合数据
+	required RoundResult roundResult = 2;
+}
+
+///////////////////////////////////////////客户端 -> 游戏 /////////////////////////////
+
+// 获取球场数据
+message C2GS_ObtainData{
+	
+	// 比赛id
+    required int32 matchId = 1;
+	
+	// 比赛type
+	required int32 matchType = 2;
+	
+}
+
+// 客户端建立比赛完成后再次调用传递必要的缺失回合数据
+message C2GS_PushFlow{
+
+	// 比赛ID
+    required int32 matchId = 1;
+	
+	// 比赛type
+	required int32 matchType = 2;
+
+	// 用户uid
+	required string uid = 3;
+	
+}
+
+// 改变阵型
+message C2GS_ChangeFormation{
+
+	// 比赛ID
+    required int32 matchId = 1;
+	
+	// 比赛type
+	required int32 matchType = 2;
+
+    // 改变阵型指令的回合数
+    optional string round = 3;
+
+    // 主客队标识(主队:0/客队：1)
+    required int32 teamFlag = 4;
+
+    // 玩家本场阵容
+    required GamePlayerBattle gamePlayerBattle = 5;
+	
+	// 玩家本场修改后的关键球员项
+    repeated GamePlayerResponsibility gamePlayerResponsibility = 6;
+}
+
+// 改变战术
+message C2GS_ChangeTactics{
+
+	// 比赛ID
+    required int32 matchId = 1;
+	
+	// 比赛type
+	required int32 matchType = 2;
+
+    // 改变阵型指令的回合数
+    optional string round = 3;
+
+    // 主客队标识(主队:0/客队：1)
+    required int32 teamFlag = 4;
+
+    // 玩家修改的战术项
+    required GameUserTacticsInfo gameUserTacticsInfo = 5;
+
+}
+
+// 结束比赛，请求结算
+message C2GS_FinishMatch{
+	// 比赛ID
+	required int32 matchId = 1;
+	
+	// 比赛type
+	required int32 matchType = 2;
+}
+
+//跳过比赛
+message C2GS_RemainRounds{
+    // 比赛ID
+    required int32 matchId = 1;
+	
+	// 比赛type
+	required int32 matchType = 2;
+
+    // 回合信息
+    optional string roundInfo = 3;
+}
+
+//离开比赛（只有PVP）
+message C2GS_LeaveMatch {
+    // 比赛ID
+    required int32 matchId = 1;
+	
+	// 比赛type
+	required int32 matchType = 2;
+}

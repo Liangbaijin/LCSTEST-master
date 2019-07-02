@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+import "gamePlayerInstance.proto";
+import "gameUserEquipment.proto";
+import "gameTeamInfo.proto";
+
+message EquipmentRespVo {
+	//装备的详情  
+    optional GameUserEquipment equipRespVo = 1;
+	
+	//玩家信息  
+    optional GameTeamInfo gameTeamInfoRespVo = 2;
+
+	//装备升星后的剩余道具数量  
+    optional int32 remianPropNum = 3;
+	
+	//卸下装备的球员;装备互换中原穿AE球员
+    optional GamePlayerInstance aPlayerId = 4;
+	
+	//装备互换中原穿BE球员,可能为空
+    optional GamePlayerInstance bPlayerId = 5;
+}

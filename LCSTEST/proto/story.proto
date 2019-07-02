@@ -1,0 +1,90 @@
+syntax = "proto2";
+
+import "propResp.proto";
+import "careerPveSweep.proto";
+import "storyChapter.proto";
+import "storyCheckpoint.proto";
+import "gameTeamInfo.proto";
+
+//获取玩家关卡、章节信息
+message C2GS_GetCheckpoint{
+
+}
+
+message GS2C_GetCheckpoint{
+	//章节信息列表
+	repeated StoryChapter storyChapter = 1;
+	//关卡信息列表
+	repeated StoryCheckpoint storyCheckpoint = 2;
+}
+
+//扫荡
+message C2GS_Sweep{
+	//关卡id
+	required int32 id = 1;
+	//扫荡次数
+	required int32 times = 2;
+}
+
+message GS2C_Sweep{
+	//关卡信息
+	required StoryCheckpoint storyCheckpoint = 1;
+	//奖励列表
+	repeated CareerPveSweep careerPveSweep = 2;
+	//玩家信息
+	required GameTeamInfo gameTeamInfo = 3;
+}
+
+//领取星级礼包
+message C2GS_GetStarPackage{
+	//章节编号
+	required int32 id = 1;
+	//礼包档次
+	required int32 grade = 2;
+}
+
+message GS2C_GetStarPackage{
+	//章节信息
+	required StoryChapter storyChapter = 1;
+	//奖励列表
+	repeated PropRespVo propRespVo = 2;
+}
+
+//重置挑战次数
+message C2GS_Reset{
+	//关卡号
+	required int32 id = 1;
+}
+
+message GS2C_Reset{
+	// 关卡信息
+	required StoryCheckpoint storyCheckpoint = 1;
+	// 返回球队信息
+	optional GameTeamInfo gameTeamInfo = 2;
+}
+
+//挑战
+message C2GS_Challenge{
+	//关卡id
+	required int32 id = 1;
+}
+
+message GS2C_Challenge{
+	//比赛id
+	required int32 matchId = 1;
+	//比赛type
+	required int32 matchType = 2;
+}
+
+message C2GS_TakeChapterFinalReward {
+	required int32 chapterId = 1; //
+}
+
+message GS2C_TakeChapterFinalReward {
+	//章节信息
+	required StoryChapter storyChapter = 1;
+	//奖励列表
+	repeated PropRespVo propRespVo = 2;
+	//玩家信息
+	required GameTeamInfo gameTeamInfo = 3;
+}

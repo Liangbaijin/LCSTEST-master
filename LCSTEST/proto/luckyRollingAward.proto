@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+import "propResp.proto";
+
+//次数奖励
+message LuckyRollingCountAward {
+	//id
+	required int32 id = 1;
+    //次数
+	required int32 times = 2;
+    //奖励id
+	repeated PropRespVo award = 3;
+	//领取状态 0：未领取；1：已领取
+	required int32 status = 4;
+}
+
+//配置的奖励(一共12个)
+message LuckyRollingAward {
+	//id
+	required int32 id = 1;
+    //奖励id
+	required PropRespVo award = 2;
+}

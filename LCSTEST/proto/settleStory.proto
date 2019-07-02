@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+
+import "storyCheckpoint.proto";
+import "propResp.proto";
+import "gameTeamInfo.proto";
+
+// 结算结果-故事生涯
+message SettleStory{
+
+	//挑战星数
+	required int32 stars = 1;
+	
+	//关卡信息
+	optional StoryCheckpoint storyCheckpoint = 2;
+	
+	//奖励列表
+	repeated PropRespVo propRespVo = 3;
+	
+	//玩家信息
+	required GameTeamInfo gameTeamInfo = 4;
+	
+}

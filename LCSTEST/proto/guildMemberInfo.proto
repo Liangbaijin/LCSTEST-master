@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+import "gameTeamInfo.proto";
+
+//公会额外信息
+message GuildMemberInfo {
+    //身份 0无公会 1普通成员 2会长 3副会长
+    required int32 status = 1;
+    //经理人信息（包括战力值）
+    required GameTeamInfo gameTeamInfo = 2;
+    //本周贡献（有公会时传）
+    optional int32 weeklyContribution = 3;
+    //总计贡献（有公会时传）
+    optional int32 totalContribution = 4;
+    //申请时间（无公会时传）
+    optional string applyTime = 5;
+}

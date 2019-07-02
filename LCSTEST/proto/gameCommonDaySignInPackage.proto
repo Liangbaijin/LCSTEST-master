@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+message GameCommonDaySignInPackage {
+
+    //累计签到次数
+    optional int32 day = 2;
+
+    //礼包ID
+    optional int32 packageId = 3;
+
+    // 状态值 0未领 1已领取
+    optional int32 status = 4; 
+}

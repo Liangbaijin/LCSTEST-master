@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+
+import "gameUserChampionRoad.proto";
+import "gameTeamInfo.proto";
+import "propResp.proto";
+
+message SettleChampionRoad {
+	
+	optional GameTeamInfo gameTeamInfo = 1;
+	
+	repeated PropRespVo rewards = 2; 
+	
+	optional GameUserChampionRoad championRoadInfos = 3;
+
+	required int32 result = 4;					// 挑战结果 1表示成功 0表示失败
+	
+	required string conditions = 5;				// 达成的条件-分割 按顺序 全达成1-2-3 未达成任意条件 4
+}

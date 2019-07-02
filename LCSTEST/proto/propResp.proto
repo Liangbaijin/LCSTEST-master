@@ -1,0 +1,31 @@
+syntax = "proto2";
+
+import "gamePlayerInstance.proto";
+import "gameUserDebris.proto";
+import "gameUserEquipment.proto";
+import "gameProperty.proto";
+
+message PropRespVo {
+	//id
+	optional int32 propId = 1;
+	//type   1.球员  2球员碎片  3装备  4装备碎片  5道具
+	optional int32 propType = 2;
+	//num  数量
+	optional int32 propNum = 3;
+	//球员对象
+	optional GamePlayerInstance gamePlayerInstance = 4;
+	//碎片对象
+	optional GameUserDebris gameUserDebris = 5;
+	//装备对象
+	optional GameUserEquipment gameUserEquipment = 6;
+	//英超球员数量
+	optional int32 yingchaoNum = 7;
+	//西甲球员数量
+	optional int32 xijiaNum = 8;
+	//意甲球员数量
+	optional int32 yijiaNum = 9;
+	//德甲球员数量
+	optional int32 dejiaNum = 10;
+	//世界球员数量
+	optional int32 shijieNum = 11;
+}

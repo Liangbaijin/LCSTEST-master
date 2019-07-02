@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+import "playerZhanli.proto";
+import "gamePlayerInstanceBase.proto";
+
+message GamePlayerInstance {
+	//球员信息
+	optional GamePlayerInstanceBase instance = 1;
+	//球员属性
+	optional PlayerZhanli attr = 2;
+	//球员战力
+	required int32 zhanli = 3;
+	//位置系数*100,如前锋放在门将则为-90
+	required int32 positionSeries = 4;
+}

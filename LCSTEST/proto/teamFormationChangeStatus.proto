@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+message TeamFormationChangeStatus {
+    // 是否需要锁阵型(0: 不需要锁; 1: 需要锁)
+    required int32 needLockFormation = 1;
+
+    // 如有更换的球员, 即将换上的球员id列表
+    repeated int32 willOnPlayerIdList = 2;
+
+    // 如有更换的球员, 即将换下的球员id列表
+    repeated int32 willOffPlayerIdList = 3;
+}

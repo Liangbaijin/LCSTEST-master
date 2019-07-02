@@ -1,0 +1,41 @@
+syntax = "proto2";
+import "recruitLable.proto";
+import "recruitClickReq.proto";
+import "recruitClickResp.proto";
+import "propResp.proto";
+import "gameMallList.proto";
+import "gameMallTimeLimitGoods.proto";
+
+//获取球员招募的主界面
+message C2GS_RecruitMainUI {
+	
+}
+//返回球员招募的主界面
+message GS2C_RecruitMainUI {
+	//主界面招募标签页列表
+	repeated RecruitLable recruitLableRespVo = 1;
+	//招募商城列表信息
+	repeated GameMallList GameMallList = 5;
+}
+
+//进行球员招募
+message C2GS_RecruitPlayer {
+	//required RecruitClickReqVo recruitClickReqVo = 1;
+	//招募标签的ID
+	required int32 id = 1;
+	
+	//招募类型  1 明星招募  2顶级招募  3限时招募
+	required int32 type = 2;
+	
+	//招募次数类型  1：单抽   10:十连抽
+	required int32 count = 3;
+}
+//返回球员招募
+message GS2C_RecruitPlayer {
+	//卡池信息
+	optional RecruitClickRespVo recruitClickRespVo = 1;
+	//招募券道具
+	optional PropRespVo propRespVo = 7;
+	//兑换券
+	optional PropRespVo exchangeCard = 8;
+}

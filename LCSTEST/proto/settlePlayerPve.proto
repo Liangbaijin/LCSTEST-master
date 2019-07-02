@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+import "gameUserPlayerPveSection.proto";
+import "gameUserPlayerPveCustom.proto";
+import "teaminfoAndPropListResp.proto";
+
+// 结算结果-球星生涯
+message SettlePlayerPve{
+
+	//小关卡获取星
+	optional GameUserPlayerPveCustom gameUserPlayerPveCustom = 1;
+	
+	//此章节信息
+	optional GameUserPlayerPveSection gameUserPlayerPveSection = 2;
+	
+	optional TeamInfoAndPropListRespVo teamInfoAndPropListRespVo = 3;
+	
+	// 挑战结果 1成功 0失败
+	required int32 result = 4;
+}

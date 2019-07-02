@@ -1,0 +1,26 @@
+syntax = "proto2";
+import "gamePlayerInstance.proto";
+
+
+message RecruitClickRespVo {
+	//招募标签的ID
+	optional int32 id = 1;
+	
+	//招募类型  1 明星招募  2顶级招募  3限时招募
+	optional int32 position = 2;
+	
+	//剩余钻石
+    optional int32 diamond = 3;
+
+	//剩余欧元
+    optional int32 coin = 4;
+
+	//单抽剩余冷却时间
+    optional int32 remainCdTime = 5;
+	
+	//单抽剩余免费次数
+    optional int32 remainfreeCount = 6;
+	
+	//招募获得的球员列表
+    repeated GamePlayerInstance playerList = 8;
+}

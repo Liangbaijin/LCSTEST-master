@@ -1,0 +1,114 @@
+syntax = "proto2";
+
+// 球员属性
+message PlayerProperty{
+
+    /////////////////////////////////////////// le2 & lea
+    // 射门
+    optional double shemen = 1;
+
+    // 传球
+    optional double chuanqiu = 2;
+
+    // 盘带
+    optional double pandai = 3;  
+
+    // 视野
+    optional double shiye = 4;    
+
+	// 盯人
+    optional double dingren = 5; 
+
+	// 抢断
+    optional double qiangduan = 6;   
+
+    // 站位
+    optional double zhanwei = 7;     
+
+    // 反应
+    optional double fanying = 8;    
+
+    /////////////////////////////////////////// le2
+    //解围
+	optional double jiewei = 9;
+
+	//扑救
+    optional double pujiu = 10;
+
+	//出击
+    optional double chuji = 11;
+
+	//开球
+	optional double kaiqiu = 12;
+
+    /////////////////////////////////////////// lea
+	// 进攻
+    optional double attack = 13;		
+
+	// 技术
+    optional double artifice = 14;    
+
+	// 防守
+    optional double defend = 15; 
+
+	// 身体
+    optional double body = 16;  
+
+	// 守门
+    optional double keep = 17;    
+
+	// 头球
+    optional double jingongpaowei = 18;      
+
+	// 远射
+    optional double yuanshe = 19;     
+
+	// 点球
+    optional double dianqiu = 20;    
+
+	// 任意球
+    optional double renyiqiu = 21;   
+
+	// 传中
+    optional double chuanzhong = 22;  
+
+	// 角球
+    optional double jiaoqiu = 23; 
+
+	// 头球
+    optional double touqiu = 24;   
+
+	// 侵略性
+    optional double qinlvexing = 25;  
+
+	// 速度
+    optional double sudu = 26;  
+
+	// 力量
+    optional double liliang = 27;   
+
+	// 耐力
+    optional double naili = 28;     
+
+	// 弹跳
+    optional double tantiao = 29;    
+
+	// 灵活
+    optional double linghuo = 30;      
+
+	// 1vs1
+    optional double vs = 31;         
+
+	// 手控球
+    optional double shoukongqiu = 32; 
+
+	// 预判
+    optional double yupan = 33;     
+
+	// 制空
+    optional double zhikong = 34;      
+	
+	// 战力
+    optional double zhanli = 35;       
+	
+}

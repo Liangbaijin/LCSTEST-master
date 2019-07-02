@@ -1,0 +1,216 @@
+syntax = "proto2";
+
+import "managerLable.proto";
+import "gameTeamInfo.proto";
+import "otherTeamInfo.proto";
+import "propResp.proto";
+import "achieveLabel.proto";
+import "achieveSeriesProcess.proto";
+
+//获取经理人详情的主界面
+message C2GS_ManagerDesc {
+	
+}
+
+message GS2C_ManagerDesc {
+	//clubIcon 俱乐部队徽
+	optional int32 clubIcon = 1;
+	
+	//managerName 经理人名字
+	optional string managerName = 2;
+	
+	//lableList 标签列表
+	optional ManagerLable lableList = 3;
+	
+	//level  经理人等级
+	optional int32 level = 4;
+	
+	//experience  经理人经验
+	optional int32 experience = 5;
+	
+	//registDate  建队日期
+	optional string registDate = 6;
+	
+	//club  俱乐部(工会)
+	optional int32 club = 7;
+	
+	//latelyLoginTime  最近登录时间(分钟)
+	optional int32 latelyLoginTime = 8;
+	
+	//leagueLevel  联赛级别 6代表联赛未开启
+	optional int32 leagueLevel = 9;
+	
+	//tiantiRank  天梯排名(-1:表示没有进入排位赛)
+	optional string tiantiRank = 10;
+	
+	//tiliReplyTime  体力全部回复时间
+	optional int64 tiliReplyTime = 11;
+	
+	//achieveIcon1  成就图标1
+	optional int32 achieveIcon1 = 12;
+	
+	//achieveIcon2  成就图标2
+	optional int32 achieveIcon2 = 13;
+	
+	//achieveIcon3  成就图标1
+	optional int32 achieveIcon3 = 14;
+
+	//公会名
+	optional string guildName = 15;
+}
+
+//获取头像标签列表
+message C2GS_ManagerLableList {
+	
+}
+
+message GS2C_ManagerLableList {
+	repeated int32 managerLableId = 1;
+}
+
+//更换标签\成就图标
+message C2GS_SwitchManagerLableIcon {
+	required ManagerLable lableList = 1;
+}
+
+message GS2C_SwitchManagerLableIcon {
+	required int32 updateCode = 1;
+}
+
+
+//更换名字
+message C2GS_SwitchName {
+	required string newName = 1;
+}
+
+message GS2C_SwitchName {
+	required int32 updateCode = 1;
+}
+
+//购买道具-- 改名卡
+message C2GS_BuyProp {
+	required int32 propId = 1;
+	required int32 propNum = 2;
+}
+
+message GS2C_BuyProp {
+	required int32 propNum = 1;
+	required int32 coin = 2;
+	required int32 diamond = 3;
+}
+
+//购买体力
+message C2GS_BuyTili {
+
+}
+
+message GS2C_BuyTili {
+	//经理人信息
+	required GameTeamInfo gameTeamInfo = 1;
+}
+
+//获取他人经理人信息
+message C2GS_GetOtherTeamInfo{
+	//他人的uid
+	required string uid = 1;
+}
+
+message GS2C_GetOtherTeamInfo{
+	//他人的经理人信息
+	required OtherTeamInfo otherTeamInfo = 1;
+	//是否是好友关系 1好友 0非好友
+	required int32 isFriend = 2;
+}
+
+//获取绑定手机详情
+message C2GS_GetTelInfo {
+
+}
+
+message GS2C_GetTelInfo {
+	//默认账户名
+	required string managerName = 1;
+	//绑定手机号（未绑定不传）
+	optional string telephone = 2;
+	//奖励礼包id
+	required int32 packageId = 3;
+	//奖励礼包状态 1已领取 0未领取
+	required int32 packageStatus = 4;
+}
+
+//领取绑定手机礼包
+message C2GS_ReceiveTelPkg {
+
+}
+
+message GS2C_ReceiveTelPkg {
+	repeated PropRespVo propRespVoList = 1;
+}
+
+//解绑确认接口
+message C2GS_UntiedTel {
+
+}
+
+message GS2C_UntiedTel {
+
+}
+
+//绑定完成接口
+message C2GS_TiedTel {
+
+}
+
+//获取徽章列表
+message C2GS_GetAchieveLableList {
+	
+}
+
+message GS2C_GetAchieveLableList {
+	//已获得的徽章id时间
+	repeated AchieveLabel achieveLableList = 1;
+	//荣誉值
+	required int32 honor = 2;
+	//系列徽章进度
+	repeated AchieveSeriesProcess achieveSeriesProcessList = 3;
+}
+
+//获取荣誉奖励信息
+message C2GS_GetHonorAward {
+	
+}
+
+message GS2C_GetHonorAward {
+	//已领过的common_achieve_award的id
+	repeated int32 honorAwardList = 1;
+}
+
+//领取荣誉奖励
+message C2GS_ReceiveHonorAward {
+	//common_achieve_award的id
+	required int32 id = 1;
+}
+
+message GS2C_ReceiveHonorAward {
+	repeated PropRespVo propRespVoList = 1;
+}
+
+//修改徽章状态
+message C2GS_ChangeAchieveLableStatus {
+	//徽章id
+	required int32 achieveLableId1 = 1;
+	required int32 achieveLableId2 = 2;
+	required int32 achieveLableId3 = 3;
+}
+
+message GS2C_ChangeAchieveLableStatus {
+	
+}
+
+message C2GS_EnterTelPage {
+
+}
+
+message C2GS_EnterRealNameRegisation {
+	
+}

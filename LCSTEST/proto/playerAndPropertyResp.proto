@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+import "gamePlayerInstance.proto";
+import "gameProperty.proto";
+
+message PlayerAndPropertyRespVo {
+	//球员详细信息
+	optional GamePlayerInstance playerRespVo = 1;
+	
+	//升级道具集合
+	repeated GameProperty list = 2;
+}

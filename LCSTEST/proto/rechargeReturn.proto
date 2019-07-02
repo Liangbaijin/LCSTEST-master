@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+message RechargeReturn {
+    required string uid = 1;
+    required int32 round = 2;
+	required string name = 3;
+	
+	//充值钻石数
+	required int32 diamond = 4;
+	
+	//返还倍率 百分制。150为1.5倍
+	required int32 diamondRate = 5;
+	
+	//倍率 百分制。150为1.5倍
+	required int32 vipExpRate = 6;
+	
+	//状态 0：未领取；1：已领取
+	required int32 status = 7;
+}

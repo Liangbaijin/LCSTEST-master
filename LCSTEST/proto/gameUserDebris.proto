@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+message GameUserDebris {
+	//碎片common表中的id
+	optional int32 debrisId = 1;
+	
+	//碎片数量
+	optional int32 num = 2;
+	
+	//更新时间
+	optional string updateTime = 3;
+	
+	//第一次获取时间
+	optional string gainTime = 4;
+}

@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+import "gameTeamInfo.proto";
+import "gameProperty.proto";
+import "gameUserFacility.proto";
+import "subcourtInfo.proto";
+
+// 获取球场信息
+message C2GS_GetFacilities {
+	
+}
+
+message GS2C_GetFacilities {
+	// 设施列表
+	repeated GameUserFacility facilities = 1;
+	// 场馆列表
+	repeated SubcourtInfo subcourtInfo = 2;
+}
+
+// 获取单个设施
+message C2GS_GetFacility {
+	// 建筑类型
+	optional int32 type = 1;
+}
+
+message GS2C_GetFacility {
+	// 建筑信息
+	optional GameUserFacility facilities = 1;	
+}
+
+// 建筑升级
+message C2GS_UpgradeFacilities {
+	// 建筑的type类型
+	required int32 type = 1; 			
+}
+
+message GS2C_UpgradeFacilities {
+	// 开始更新的建筑详情
+	required GameUserFacility facility = 1; 
+	// 欧元更新
+	optional GameTeamInfo gameTeamInfo = 2;
+}
+
+message C2GS_UpgradeQuicklyFinish {
+	// 建筑的type类型
+	required int32 type = 1;
+}
+
+message GS2C_UpgradeQuicklyFinish {
+	// 建筑外部信息
+	required GameUserFacility facility = 1;
+
+	// 更新钻石
+	required GameTeamInfo gameTeamInfo = 2;
+}

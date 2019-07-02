@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+// 充值返利信息
+message RechargeRebateInfo {
+	// 
+	optional int32 id = 1;
+	// 活动id
+	optional int32 actId = 2;
+	// 需要重置的
+	optional int32 amount = 3;
+	// 累计消耗数			
+	optional int32 consume = 4;
+	// 奖励
+	optional string reward = 5;
+	// 0未达成 1可领取 2已领取			
+	optional int32 status = 6;
+	// 排序字段
+	optional int32 level = 7;
+}

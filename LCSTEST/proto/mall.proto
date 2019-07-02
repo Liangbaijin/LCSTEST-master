@@ -1,0 +1,76 @@
+syntax = "proto2";
+
+import "gameMallList.proto";
+import "gameMallTimeLimitGoods.proto";
+import "gameMallGoods.proto";
+import "gameMallDetail.proto";
+import "teaminfoAndPropListResp.proto";
+import "gameTeamInfo.proto";
+
+//进入商城主页面
+message C2GS_EnterMallHomePage {
+	
+}
+
+message GS2C_EnterMallHomePage {
+	//商城列表信息
+	repeated GameMallList GameMallList = 1;
+	
+	//banner中信息
+	repeated GameMallTimeLimitGoods gameMallTimeLimitGoods = 2;
+}
+
+//进入对应商城
+message C2GS_EnterMall {
+	//商城id
+	required int32 mallId = 1;
+	// 商城类型 1普通商城  2限时商城 3普通招募兑换商城 4限时招募兑换商城
+	required int32 mallType = 2;
+}
+//返回进入对应商城
+message GS2C_EnterMall {
+	required GameMallDetail gameMallDetail = 1;
+}
+
+//购买物品
+message C2GS_BuyGoods {
+	//商品栏位
+	required int32 field = 1;
+	//购买商品的数量
+	required int32 goodsNum = 2;
+	//商城id
+	required int32 mallId = 3;
+	//商品id  GameMallGoods中的id！！！
+	required int32 goodsId = 4;
+	// 商城类型 1普通商城  2限时商城 3普通招募兑换商城 4限时招募兑换商城
+	required int32 mallType = 5;
+}
+//返回购买物品
+message GS2C_BuyGoods {
+	optional TeamInfoAndPropListRespVo teamInfoAndPropListRespVo = 1;
+}
+
+//刷新商品
+message C2GS_RefreshGoodsList {
+	//商城id
+	required int32 mallId = 1;
+
+	required int32 mallType = 2;
+}
+//返回刷新物品
+message GS2C_RefreshGoodsList {
+	//物品列表
+	repeated GameMallGoods gameMallGoods = 1;
+	//已经刷新的次数
+	optional int32 refreshNum = 2;
+	//用户信息
+	optional GameTeamInfo gameTeamInfo = 3;
+}
+//进入招募兑换商城
+message C2GS_EnterRecruitMall {
+
+}
+
+message GS2C_EnterRecruitMall {
+	repeated GameMallDetail gameMallDetailList = 1;
+}

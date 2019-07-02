@@ -1,0 +1,393 @@
+syntax = "proto2";
+
+import "gameTeamInfo.proto";
+import "rechargeReturn.proto";
+import "propResp.proto";
+import "gameContinuousRechargeInfo.proto";
+import "activityExchange.proto";
+import "gameProperty.proto";
+import "rechargeRebate.proto";
+import "consumeRebate.proto";
+import "luckyRollingAward.proto";
+import "rechargeItem.proto";
+
+//打开用户领取体力页面
+message C2GS_OpenGetTiliHomePage {
+	
+}
+
+message GS2C_OpenGetTiliHomePage {
+	//已领取哪些类型1午餐   2晚餐  3夜宵 格式（1-2 代表1和2开启）
+	optional string openType = 1;
+	//已开放的餐类型 数组第一个代表午餐以此类推，openedMeal表示餐的状态 0表示未开启，1表示可免费领取，2表示已过期
+ 	repeated int32 openedMeal = 2;
+}
+
+//领取体力
+
+
+message C2GS_OpenGetTili {
+	//1午餐   2晚餐  3夜宵
+	optional int32 type = 1;
+}
+message GS2C_OpenGetTili {
+	//已领取哪些类型1午餐   2晚餐  3夜宵 格式（1-2 代表1和2开启）
+	optional string openType = 1;
+	//经理人信息
+	optional GameTeamInfo gameTeamInfo = 4;
+}
+
+//获取可配置活动列表
+message C2GS_GetActivityList{
+}
+
+//登录的时候服务器调用可配置活动列表,并且独立该接口
+message GS2C_GetActivityList{
+	//1:登录奖励、2:取体力、3:双倍充值、4:折扣充值（未开发）、5:等级礼包、6:冲级活动、7:临时的封测登录活动、 11：月卡 、12，13 连续充值
+	repeated int32 typeList = 1;
+}
+
+
+//获取本轮充值返还信息
+message C2GS_RechargeReturnThisRound{
+	
+}
+
+message GS2C_RechargeReturnThisRound{
+	//活动公共信息
+    required string title = 1;
+    required string desc = 2;
+	
+	//领取状态 0：不可领取；1：可领取
+	required int32 status = 3;
+	required RechargeReturn info = 4;
+}
+
+//获取以前各轮次累计充值返还信息
+message C2GS_RechargeReturnLastRounds{
+	
+}
+
+message GS2C_RechargeReturnLastRounds{
+	//活动公共信息
+    required string title = 1;
+    required string desc = 2;
+
+	
+	//领取状态 0：不可领取；1：可领取
+	required int32 status = 3;
+	repeated RechargeReturn info = 4;
+}
+
+//领取
+message C2GS_GetRechargeReturnAward{
+	
+}
+
+message GS2C_GetRechargeReturnAward{
+    //包括钻石
+	required PropRespVo propRespVo = 1;
+	
+	//设置钻石和vip,vip经验
+	required GameTeamInfo gameTeamInfo = 2;
+}
+
+// 获取连续充值信息
+message C2GS_GetContinuousRechargeInfo {
+	
+}
+
+message GS2C_GetContinuousRechargeInfo {
+	
+	repeated GameContinueRechargeInfo dailyRechargeInfos = 1;
+
+	optional int32 remainTime = 2;
+
+	optional int32 activityType = 3;
+}
+
+// 领取连续充值奖励
+message C2GS_TakeContinuousRechargeReward {
+
+	required int32 day = 1;
+
+}
+
+message GS2C_TakeContinuousRechargeReward {
+	
+	optional GameContinueRechargeInfo dailyRechargeInfo = 1;
+
+	//获得的道具
+	repeated PropRespVo propRespVo = 2;
+}
+
+// 交換商店
+message C2GS_GetExchangeActivity {
+
+}
+
+message GS2C_GetExchangeActivity {
+	required ExchangeActivity exchangeActivity = 1;
+}
+
+// 兑换商店
+message C2GS_ExchangeProduct {
+	// 活动id
+	required int32 activityId = 1;
+	// 商品id
+	required int32 productId = 2;
+	// 数量
+	required int32 num = 3;
+}
+
+message GS2C_ExchangeProduct {
+	// 
+	repeated PropRespVo propRespVo = 1;
+	// 
+	repeated GameProperty propertyList = 2;
+	// 
+	optional ExchangeProduct exchangeProduct = 3;
+}
+
+// 获取充值返利信息 
+message C2GS_GetRechargeRebateInfo {
+	
+}
+
+message GS2C_GetRechargeRebateInfo {
+	// 
+	repeated RechargeRebateInfo rechargeRebateList = 1;
+	// 时间信息
+	optional string dateTime = 2;
+}
+
+// 领取消耗返利奖励
+message C2GS_TakeRechargeRebateReward {
+	optional int32 id = 1;
+	optional int32 actId = 2;
+}
+
+message GS2C_TakeRechargeRebateReward {
+	optional GameTeamInfo gameTeamInfo = 1;
+	repeated PropRespVo propRespVoList = 2;
+}
+
+// 获取消耗返利活动内容
+message C2GS_GetConsumeRebate {
+	
+}
+
+message GS2C_GetConsumeRebate {
+	// 
+	repeated ConsumeRebateInfo consumeRebateInfoList = 1;
+	// 时间信息
+	optional string dateTime = 2;
+}
+
+// 领取消耗返利奖励
+message C2GS_TakeConsumeRebateReward {
+	optional int32 id = 1;
+	optional int32 actId = 2;
+}
+
+message GS2C_TakeConsumeRebateReward {
+	// 
+	optional GameTeamInfo gameTeamInfo = 1;
+	// 
+	repeated PropRespVo propRespVoList = 2;
+}
+
+
+message C2GS_GetLuckyRollingInfo {
+
+}
+
+message GS2C_GetLuckyRollingInfo {
+	//活动id
+	required int32 activityId = 1;
+	//活动开启时间
+	required string startTime = 2;
+	//活动结束时间
+	required string endTime = 3;
+	
+	//免费次数
+	required int32 freeTimes = 4;
+	//抽奖列表
+	repeated LuckyRollingAward awardList = 5;
+	//次数奖励
+	repeated LuckyRollingCountAward countAwardList = 6;
+	//已经抽奖的总次数
+	required int32 totalTimes = 7;
+}
+
+//抽奖
+message C2GS_Rolling {
+    //活动id
+	required int32 activityId = 1;
+	//抽奖次数 1/5/10
+	required int32 times = 2;
+}
+
+message GS2C_Rolling {
+    //活动id
+	required int32 activityId = 1;
+	//已经抽奖的总次数
+	required int32 totalTimes = 2;
+	//抽到的奖励
+	repeated LuckyRollingAward awardList = 3;
+	//剩余免费次数
+	required int32 freeTimes = 4;
+	//用钻后的玩家钻石信息
+	required GameTeamInfo gameTeamInfo = 5;
+}
+
+//领取次数礼包
+message C2GS_GetCountAward {
+	//次数奖励id
+	required int32 awardId = 2;
+}
+
+message GS2C_GetCountAward {
+	repeated PropRespVo propRespList = 1;
+}
+
+message C2GS_GetGrowUpFundInfo {
+}
+
+message GS2C_GetGrowUpFundInfo {
+	// 购买状态 0未购买 1已购买
+	required int32 status = 1;
+	// 已经领取的奖励列表
+	repeated int32 takenRewardList = 2;
+	// 成长基金充值信息
+	required RechargeItem growUpFundRechargeInfo = 3;
+	// 剩余时间
+	optional int32 remainTime = 4;
+}
+
+message C2GS_TakeGrowUpFundReward {
+	// 奖励id
+	required int32 rewardId = 1;
+}
+
+message GS2C_TakeGrowUpFundReward {
+	// 奖励列表
+	repeated PropRespVo propRespList = 1;
+	// 用钻后的玩家钻石信息
+	required GameTeamInfo gameTeamInfo = 2;
+}
+
+//获取世界杯回顾当前信息
+message C2GS_WorldCupReviewInfo {
+	
+}
+
+message GS2C_WorldCupReviewInfo {
+	//活动id
+	required int32 activityId = 1;
+	//活动描述
+	required string activityDesc = 2;
+	//剩余时间
+	required int32 leftTime = 3;	
+	//当前挑战关卡id
+	required int32 chapterId = 4;
+	//剩余挑战次数
+	required int32 times = 5;
+	//是否已通关 0：未通关；1：已通关
+	required int32 passed = 6;
+}
+
+//世界杯回顾挑战
+message C2GS_WorldCupReviewChallenge {
+	//关卡id
+	required int32 chapterId = 1;
+}
+
+message GS2C_WorldCupReviewChallenge {
+	//比赛id
+	required int32 matchId = 1;
+	//比赛类型
+	required int32 matchType = 2;
+}
+
+//获取圣诞活动信息
+message C2GS_ChristmasActivityInfo {
+	
+}
+
+message GS2C_ChristmasActivityInfo {
+	//活动id
+	required int32 activityId = 1;
+	//活动描述
+	required string activityDesc = 2;
+	//活动开启时间 ~ 结束时间
+	required string displayTime = 3;
+	
+	//奖池里面可抽奖励数目
+	repeated int32 count = 4;
+	
+	//单次消耗道具id/数目
+	required int32 normalPropId = 5;
+	required int32 normalPropNum = 6;
+	required int32 haohuaPropId = 7;
+	required int32 haohuaPropNum = 8;
+	
+	//消耗钻石单价
+	required int32 costDiamond = 9;
+}
+
+//获取奖励情况
+message C2GS_ChristmasActivityRewardInfo {
+	//活动id
+	required int32 activityId = 1;
+	//类型 1:普通；2：豪华
+	required int32 rewardType = 2;
+}
+
+message GS2C_ChristmasActivityRewardInfo {
+	//活动id
+	required int32 activityId = 1;
+	//类型 1:普通；2：豪华
+	required int32 rewardType = 2;
+	//已经完成的奖励列表
+	repeated int32 idList = 3;
+	//是否循环 0：否；1：是
+	required int32 circle = 4;
+}
+
+//重置
+message C2GS_ResetChristmasReward {
+	//活动id
+	required int32 activityId = 1;
+	//类型 1:普通；2：豪华
+	required int32 rewardType = 2;
+}
+
+message GS2C_ResetChristmasReward {
+	//奖池里面可抽奖励数目
+	required int32 count = 1;
+}
+
+//抽奖
+message C2GS_DrawChristmasReward {
+	//活动id
+	required int32 activityId = 1;
+	//奖励类型 1:普通；2：豪华
+	required int32 rewardType = 2;
+	//抽奖类型 1:单抽；2：10连抽
+	required int32 drawType = 3;
+}
+
+message GS2C_DrawChristmasReward {
+	//活动抽奖奖励列表
+	repeated PropRespVo rewardList = 1;
+	//剩余道具列表
+	repeated GameProperty property = 2;
+	//奖池里面可抽奖励数目
+	required int32 count = 3;
+	//是否已自动重置 0: 未；1：已
+	required int32 reset = 4;
+	
+	//返回钻石数目
+	required GameTeamInfo gameTeamInfo = 5;
+}

@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+import "settleAd.proto";
+import "settleLegendChallenge.proto";
+import "settlePlayerPve.proto";
+import "settleStory.proto";
+import "settleRankedRace.proto";
+import "settleTourPve.proto";
+import "settlePracticeCompetition.proto";
+import "settleChampionRoad.proto";
+import "settleFriendlyMatch.proto";
+import "settleNewPlayerCareer.proto";
+
+
+// 结算结果
+message Settle{
+
+	// 广告商
+	optional SettleAd settleAd = 1;
+	
+	// 传奇挑战赛
+	optional SettleLegendChallenge settleLegendChallenge = 2;
+	
+	// 球星生涯
+	optional SettlePlayerPve settlePlayerPve = 3;
+	
+	// 故事生涯
+	optional SettleStory settleStory = 4;
+	
+	// 排名赛
+	optional SettleRankedRace settleRankedRace = 5;
+	
+	// 巡回赛
+	optional SettleTourPve settleTourPve = 6;
+
+	// 训练赛
+	optional SettlePracticeCompetition settlPracticeCompetition = 7;
+
+	// 冠军之路
+	optional SettleChampionRoad settleChampionRoad = 8;
+	
+	//友谊赛
+	optional SettleFriendlyMatch settleFriendlyMatch = 9;
+
+	optional SettleNewPlayerCareer settleNewPlayerCareer = 10;
+}

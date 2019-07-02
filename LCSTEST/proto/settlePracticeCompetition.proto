@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+import "gamePracticeCompetition.proto";
+
+message SettlePracticeCompetition {
+
+	required GamePracticeCompetition practiceCompetition = 1;
+
+	required int32 result = 2; 							// 战斗结果 1为胜利 2为失败
+}

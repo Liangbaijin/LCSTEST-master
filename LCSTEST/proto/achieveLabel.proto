@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+message AchieveLabel {
+    //已获得的徽章id
+	required int32 achieveLable = 1;
+	//获得时间
+	required string addTime = 2;
+}

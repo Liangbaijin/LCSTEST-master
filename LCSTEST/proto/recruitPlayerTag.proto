@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+message RecruitPlayerTag {
+	//球员id
+	required int32 playerId = 1;
+	
+	//tag 1：常规球员; 2:活动球员；
+	required int32 tag = 2;
+}

@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+//登录奖励活动礼包的最小单位
+message ActivityPackage{
+	//奖励Id
+	required int32 id = 1;
+	
+	//礼包id
+	required int32 packageId = 2;
+	
+	//需要累计登录的天数
+	required int32 days = 3;
+	
+	//领取状态0不可领取，1已领取，2可领取
+	required int32 status = 4;
+}

@@ -1,0 +1,92 @@
+syntax = "proto2";
+
+import "playerZhanli.proto";
+
+message GamePlayerInstanceBase {
+	//game数据库中球员id（唯一）
+	optional int32 playerId = 1;
+
+	//common数据库中球员id
+    optional int32 commonPlayerId = 2;
+
+	//uid
+    optional string uid = 3;
+
+	//球员体能
+    optional int32 tineng = 4;
+	
+	//球员状态
+	optional int32 zhuangtai = 5;
+	
+	//球员伤病
+	optional int32 shangbing = 6;
+
+	//球员的上场状态（0：候补   1：上场    2：替补
+    optional int32 status = 7;
+
+	//球员星级
+    optional int32 star = 8;
+	
+	//默契的后缀数即为type， 1为前锋 2为中场 3为后卫 4为门将
+    optional int32 tacitUnderstandingLevel1 = 21;
+    
+    //默契经验值
+    optional int32 tacitUnderstandingExp1 = 22;
+
+    //默契等级
+    optional int32 tacitUnderstandingLevel2 = 24;
+    
+    //默契经验值
+    optional int32 tacitUnderstandingExp2 = 25;
+
+	//默契等级
+    optional int32 tacitUnderstandingLevel3 = 26;
+    
+    //默契经验值
+    optional int32 tacitUnderstandingExp3 = 27;
+
+	//默契等级
+    optional int32 tacitUnderstandingLevel4 = 28;
+    
+    //默契经验值
+    optional int32 tacitUnderstandingExp4 = 29;
+
+	//球员进阶
+    optional int32 gradation = 9;
+
+	//球员等级
+    optional int32 level = 10;
+
+	//球员技能1的等级
+    optional int32 skill1Grade = 11;
+
+	//球员技能2的等级
+    optional int32 skill2Grade = 12;
+
+	//球员技能3等级
+    optional int32 skill3Grade = 13;
+
+	//球员编号
+    optional int32 serialNumber = 14;
+
+	//球员经验值
+    optional int32 exprience = 15;
+	
+	//伤病恢复到健康剩余天数
+	optional int32 shangbingDay = 16;
+
+	//伤病下一次恢复的时间
+    optional int64 shangbingTime = 17;
+
+	//体能上次恢复时间
+    optional int64 replyTime = 18;
+	
+	//获取球员时间
+	optional int64 gainTime = 19;
+	
+	//球员是否在拍摄（1是  0不是）
+	optional int32 isShoot = 20;
+	
+	//是否是新球员，1是 0否
+	optional int32 newPlayer = 23;
+}

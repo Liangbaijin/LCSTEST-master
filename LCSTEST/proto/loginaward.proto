@@ -1,0 +1,42 @@
+syntax = "proto2";
+
+import "activityPackage.proto";
+import "propResp.proto";
+
+//获取登录奖励活动信息及该玩家礼包领取信息
+message C2GS_Get{
+	
+}
+
+message GS2C_Get{
+	//开启时间
+	required string startTime = 1;
+	
+	//关闭时间
+	required string endTime = 2;
+	
+	//主标题
+	required string title = 3;
+	
+	//副标题（描述）
+	required string desc = 4;
+	
+	//活动配图
+	required string icon = 5;
+	
+	//礼包
+	repeated ActivityPackage activityPackage = 6;
+}
+
+//领取礼包
+message C2GS_ReceivePackage{
+	//奖励Id
+	required int32 awardId = 1;
+}
+
+message GS2C_ReceivePackage{
+	//礼包
+	repeated ActivityPackage activityPackage = 1;
+	//获得道具列表
+	repeated PropRespVo propRespVo = 2;
+}

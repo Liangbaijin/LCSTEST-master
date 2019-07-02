@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+message GameUserPlayerPveSection {
+	//俱乐部编号（1-12）
+    optional int32 type = 10;
+
+    //章节编号
+    optional int32 sectionId = 1;
+
+    //用户此章节获得的星数
+    optional int32 sectionStar = 2;
+
+    //此章节礼包1是否领取（1领取 0未领取）
+    optional int32 package1Id = 3;
+
+    //此章节礼包2是否领取（1领取 0未领取）
+    optional int32 package2Id = 4;
+
+    //此章节礼包3是否领取（1领取 0未领取）
+    optional int32 package3Id = 5;
+	
+	//章节是否已通关 1通关  0没有通关
+	optional int32 over = 11;
+	
+	
+}

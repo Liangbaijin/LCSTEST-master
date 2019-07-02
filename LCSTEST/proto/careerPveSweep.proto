@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+import "propResp.proto";
+
+//扫荡返回结构
+message CareerPveSweep{
+	//奖励列表
+	repeated PropRespVo propRespVo = 1;
+}

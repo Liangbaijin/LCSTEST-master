@@ -1,0 +1,31 @@
+syntax = "proto2";
+
+import "gamePlayerInstance.proto";
+import "gameUserEquipment.proto";
+import "gameUserDebris.proto";
+import "gameProperty.proto";
+import "gamePlayerBattle.proto";
+
+
+message GoodsRespVo {
+	//玩家球员列表
+	repeated GamePlayerInstance playerList = 1;
+
+	//玩家球员碎片列表
+	repeated GameUserDebris playerDebrisList = 2;
+
+	//玩家装备列表
+	repeated GameUserEquipment equipList = 3;
+
+	//玩家装备碎片列表
+	repeated GameUserDebris equipDebrisList = 4;
+	
+	//道具列表
+	repeated GameProperty propertyList = 5;
+
+	//玩家阵容信息
+	repeated GamePlayerBattle playerBattle = 6;
+
+	//道具列表
+	repeated GameProperty packageList = 7;
+}

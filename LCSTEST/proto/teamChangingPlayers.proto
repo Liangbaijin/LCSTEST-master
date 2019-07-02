@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+// 关于球队换人的状态
+message TeamChangingPlayers {
+
+    // 是否场上换人 无换人状态:0  场上换人: 1   场上与替补球员替换: 2
+    optional int32 isChangeOnField = 1;
+
+    // 如果是场上与替补球员替换, 附上换上球员与换下球员的playerID表
+    // 换上球员List
+    repeated int32 upPlayerIds = 2;
+    
+    // 即将换下的球员List
+    repeated int32 downPlayerIds = 3;
+
+    // 总换下的球员List
+    repeated int32 totalDownPlayerIds = 4;
+    
+}

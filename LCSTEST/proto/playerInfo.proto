@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+
+//用户球员信息
+message PlayerInfo{
+	//球员自增id
+	optional int32 playerId = 1;
+	
+	//球员模版id
+	optional int32 playerModelId = 2;
+	
+	//可上阵位置, 多个位置以'-'分割, 例1-2-3
+	optional string position = 3;
+
+	//球衣号码
+	optional int32 number = 4;
+
+	//状态系数值 1:极好 2:良好 3:一般 4:差 5:极差
+	optional int32 state = 5;
+
+	//体力
+	optional int32 tili = 6;
+	
+	//受伤状态 0:健康  1轻伤 2重伤
+	optional int32 woundType = 7;
+
+}

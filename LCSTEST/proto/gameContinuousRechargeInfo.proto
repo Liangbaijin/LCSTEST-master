@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+message GameContinueRechargeInfo {
+	// 活动id
+	required int32 activityId = 1;
+	// 
+	required int32 activityType = 2;
+	// 
+	optional int32 day = 3;
+	// 0未领取 1可领取 2已领取
+	optional int32 status = 4;
+	// 
+	optional string reward = 5;
+	// 充值金额
+	optional int32 amount = 6;
+}

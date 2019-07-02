@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+//单个场馆的信息
+message SubcourtInfo {
+	//场馆类型（器械室、运动场等，common_subcourt_info的id）
+	required int32 subcourtType = 1;
+	//截止时间戳
+	required string endTime = 2;
+	//倒计时，单位秒（解决客户端时区问题）
+	required int32 remainTime = 3;
+	//正在使用这个场馆的通用球员id(没有时不传)
+	optional int32 comPlayerId = 4;
+	//雇员id，没有时不传
+	optional int32 leftStaffId = 5;
+	//同上
+	optional int32 rightStaffId = 6;
+	//预期训练时间
+	required int32 cd = 7;
+	//使用后球员状态变化值A(没有时不传)
+	optional int32 statusA = 8;
+	//使用后球员状态变化值B(没有时不传)
+	optional int32 statusB = 9;
+}

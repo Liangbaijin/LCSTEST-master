@@ -1,0 +1,45 @@
+syntax = "proto2";
+
+message GameRankedRace {
+	//uid
+    optional string uid = 1;
+
+    //当前排名
+    required int32 rank = 3;
+
+    //历史最高排名
+    required int32 historyRank = 4;
+
+    //积分
+    required int32 score = 5;
+
+    //被点赞的次数
+    required int32 beLikeCount = 6;
+	
+	//战力
+	required int32 zhanli = 7;
+	
+	//名称
+	required string name = 8;
+	
+	//vip等级
+	required int32 vip = 9;
+	
+	//俱乐部
+	optional int32 club = 10;
+	
+	//世界排名赛挑战次数
+	optional int32 rankedNum = 12;
+	
+	//剩余挑战冷却
+	optional int64 rankedEndTime = 13;
+	
+	//已经购买的数量
+	optional int32 buyBattleNum = 14;
+	
+	//队标
+	required int32 icon = 15;
+	
+	//经理人等级
+	required int32 level = 16;
+}

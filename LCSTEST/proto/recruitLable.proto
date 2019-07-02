@@ -1,0 +1,56 @@
+syntax = "proto2";
+
+import "recruitPlayerTag.proto";
+
+message RecruitLable {
+	//招募标签的ID
+	optional int32 id = 1;
+	
+	//招募类型  1 明星招募  2顶级招募  3限时招募
+	optional int32 type = 2;
+	
+	//招募类型图片
+	optional int32 titleIcon = 3;
+	
+	//招募的图标
+	optional int32 icon = 4;
+	
+	//招募概率规则图标
+	optional int32 ruleIcon = 5;
+	
+	//货币类型 1：钻石  2：欧元
+	optional int32 priceType = 6;
+	
+	//单抽价格
+	optional int32 price = 7;
+	
+	//十抽价格
+	optional int32 priceTen = 8;
+	
+	//单抽自然冷却时间(秒数)
+    optional int32 cdTime = 9;
+	
+	//单抽免费的次数
+	optional int32 freeCount = 10;
+	
+	//活动开启时间:string 类型，该时间只是做展示
+	optional string startTime = 11;
+	
+	//活动结束时间
+	optional string endTime = 12;
+	
+	//玩家剩余免费的次数
+	optional int32 remainfreeCount = 13;
+	
+	//单抽剩余冷却时间
+	optional int32 remainCdTime = 14;
+	
+	//五星球员的列表
+	repeated RecruitPlayerTag playerIdList = 15;
+	
+	//概率list（从5星到2星，实际概率*10000）
+	repeated int32 probabilityList = 16;
+	
+	//规则文字
+	optional string ruleText = 17;
+}

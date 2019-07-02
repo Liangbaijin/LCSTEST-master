@@ -1,0 +1,42 @@
+syntax = "proto2";
+
+message GameMallList {
+	//商城id
+	optional int32 id = 1;
+	
+	//商城名称
+	optional string mallName = 2;
+	
+	//商城类型   1普通商城  2限时商城 3普通招募兑换商城 4限时招募兑换商城
+	optional int32 mallType = 3;
+	
+	//刷新需要消耗的道具的id
+	optional int32 propId = 4;
+	
+	//刷新需要消耗的道具的数量
+	optional int32 propNum = 5;
+	
+	//商城刷新的类型(1每天刷新  2每周刷新
+	optional int32 refreshType = 6;
+	
+	//可刷新的次数
+	optional int32 refreshNum = 7;
+	
+	//开始时间
+	optional string startTime = 8;
+	
+	//结束时间
+	optional string endTime = 9;
+	
+	//经理人限制等级
+	optional int32 teamLevel = 10;
+	
+	//对应道具累计消耗表中的type
+    optional int32 addUpCostType = 11;
+	
+	//是否开启  1开启  0没有开启
+	optional int32 isOpen = 12;
+	
+	//资源条展示道具id
+	optional int32 costId  = 13;
+}

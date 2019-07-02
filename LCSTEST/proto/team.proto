@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+import "teamFormation.proto";
+import "teamTactics.proto";
+import "teamKeyPlayer.proto";
+import "teamMemberInfo.proto";
+
+// 球队信息
+message Team {
+
+    // 是否机器人(true为机器人, false为玩家)
+    optional bool isRobot = 1 [default = false];
+
+    // 玩家本场阵容
+    optional TeamFormation teamFormation = 2;
+	
+	// 球员信息
+	repeated TeamMember teamMember = 3;
+
+	//json字符串
+	required string originalTactics = 4;
+	
+    // 战术
+	repeated TeamTactics tactics = 5;
+
+    // 关键球员
+	repeated TeamKeyPlayer keyPlayers = 6;
+	
+	// 球队战力
+    optional double teamCapacity = 7;
+
+}

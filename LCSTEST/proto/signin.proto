@@ -1,0 +1,51 @@
+syntax = "proto2";
+
+import "gameUserDaySignIn.proto";
+import "gameUserDaySignInPackage.proto";
+import "gameCommonDaySignIn.proto";
+import "gameCommonDaySignInPackage.proto";
+import "teaminfoAndPropListResp.proto";
+
+//打开用户签到页面
+message C2GS_OpenSignInHomePage {
+	
+}
+
+message GS2C_OpenSignInHomePage {
+	optional GameUserDaySignIn gameUserDaySignIn = 1; 
+	
+	repeated GameCommonDaySignIn gameCommonDaySignIn = 3;
+	
+	repeated GameCommonDaySignInPackage gameCommonDaySignInPackage = 4;
+	
+	//剩余补签到次数
+	optional int32 num = 5;
+
+	// 当前签到月
+	optional int32 month = 6;
+}
+
+//签到
+message C2GS_SignIn {
+	
+}
+
+message GS2C_SignIn {
+	optional TeamInfoAndPropListRespVo teamInfoAndPropListRespVo = 1;
+}
+
+//补签
+message C2GS_AddSignIn {
+	
+}
+message GS2C_AddSignIn {
+	optional TeamInfoAndPropListRespVo teamInfoAndPropListRespVo = 1;
+}
+
+//累计签到
+message C2GS_AddUpSignIn {
+
+}
+message GS2C_AddUpSignIn {
+	optional TeamInfoAndPropListRespVo teamInfoAndPropListRespVo = 1;
+}

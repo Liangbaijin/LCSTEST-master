@@ -1,0 +1,7 @@
+syntax = "proto2";
+
+//友谊赛结算
+message SettleFriendlyMatch {
+	//挑战结果 1成功 0失败
+	required int32 result = 1;
+}

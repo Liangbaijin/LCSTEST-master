@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+//公会额外信息
+message GuildExtraInfo {
+    //公会id
+    required int32 id = 1;
+    //当前公会贡献值
+    required int32 nowContribution = 2;
+    //公会贡献值上限
+    required int32 maxContribution = 3;
+    //公会科技信息
+    repeated GuildTechInfo guildTechInfoList = 4;
+}
+
+//公会科技信息
+message GuildTechInfo {
+    //科技类型 1成员上限增加 2贡献上限提升 3商品种类增加
+    required int32 type = 1;
+    //等级
+    required int32 level = 2;
+}

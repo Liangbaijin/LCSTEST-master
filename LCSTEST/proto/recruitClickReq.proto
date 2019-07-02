@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+message RecruitClickReqVo {
+	//招募标签的ID
+	required int32 id = 1;
+	
+	//招募类型  1 明星招募  2顶级招募  3限时招募
+	required int32 type = 2;
+	
+	//招募次数类型  1：单抽   10:十连抽
+	required int32 count = 3;
+}

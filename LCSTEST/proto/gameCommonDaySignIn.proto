@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+message GameCommonDaySignIn {
+
+    //第几天
+    optional int32 day = 2;
+
+    //礼包id
+    optional int32 packageId = 3;
+
+
+    //vip等级
+    optional int32 vipLevel = 6;
+}

@@ -1,0 +1,49 @@
+syntax = "proto2";
+
+
+// 球员统计信息
+message PlayerStatistics {
+
+    //球员playerid
+    optional int32 playerId = 1;
+
+    //球员model id
+    optional int32 playerModelId = 2;
+
+    //球员消耗体力
+    optional int32 playerTili = 3;
+
+    //球员是否被选为上场球员(上场:1; 未上场:0)
+    optional int32 hasSelected = 4;
+
+    //进球数
+    optional int32 shootNumber = 5;
+    
+	//助攻数
+	optional int32 assistNumber = 6;
+
+    //是否门将(门将:1; 非门将:0)
+    optional int32 isGoalKeeper = 7;
+
+    //被进球数
+    optional int32 saveFailedNum = 8;
+
+    //守住球数
+    optional int32 saveSuccessNum = 9;
+
+    //是否MVP(MVP:1; 非MVP:0)
+    optional int32 isMVP = 10;
+
+    //球员分数
+    optional double score = 11;
+
+    //球员场上时间(秒)
+    optional float onFieldTime = 12;
+
+    //受伤状态(正常:0;轻伤:1;重伤:2;)
+    optional int32 injureStatus = 13;
+
+    //犯规状态(未犯规:0;普通犯规:1;黄牌:2;红牌:3)
+    optional int32 foulType = 14;
+    
+}

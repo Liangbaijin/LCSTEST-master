@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+import "gameTeamInfo.proto";
+
+//友谊赛日志
+message FriendlyMatchHistory {
+	//matchId
+	required int32 matchId = 1;
+	//比赛类型
+	required int32 matchType = 2;
+	//被挑战者的用户信息
+	required GameTeamInfo homeUser = 3;
+	//挑战者的用户信息
+	required GameTeamInfo visitUser = 4;
+	//被挑战者的进球数
+	required int32 homeScore = 5;
+	//挑战者的进球数
+	required int32 visitScore = 6;
+	//挑战时间戳
+	required string addTime = 7;
+}

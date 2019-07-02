@@ -1,0 +1,60 @@
+syntax = "proto2";
+
+message GameUserEquipment {
+	//玩家唯一装备ID  
+    optional int32 id = 1;
+	
+	//com库装备ID  
+    optional int32 comEquipId = 2;
+
+	//装备等级 
+    optional int32 level = 3;
+
+	//装备星级 
+    optional int32 star = 4;
+	
+	//技能一ID
+	optional int32 skill1Eid = 5;
+	
+	//技能一等级
+	optional int32 skill1Level = 6;
+	
+	//技能二ID
+	optional int32 skill2Eid = 7;
+	
+	//技能二等级
+	optional int32 skill2Level = 8;
+
+	//装在哪个球员身上，0表示未装
+    optional int32 playerId = 9;
+
+	//第一次获取的时间
+    optional string gainTime = 10;
+
+	//装备加成属性的类型1 : 1进攻   2防守  3综合
+    optional int32 addType1 = 11;
+
+	//属性加成的类型 0 数值  1百分比  
+    optional int32 addValueType1 = 12;
+
+	//加成值 
+    optional int32 addValue1 = 13;
+	
+	//装备加成属性的类型2 
+    optional int32 addType2 = 14;
+
+	//属性加成的类型 0 数值  1百分比 
+    optional int32 addValueType2 = 15;
+
+	//加成值 
+    optional int32 addValue2 = 16;
+
+	//装备加成属性的类型3 
+    optional int32 addType3 = 17;
+
+	//属性加成的类型 0 数值  1百分比 
+    optional int32 addValueType3 = 18;
+
+	//加成值 
+    optional int32 addValue3 = 19;
+}

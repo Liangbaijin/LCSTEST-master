@@ -1,0 +1,77 @@
+syntax = "proto2";
+
+import "gameTeamInfo.proto";
+import "quizItem.proto";
+import "propResp.proto";
+
+//获取竞猜列表
+message C2GS_GetQuitList {
+	
+}
+
+message GS2C_GetQuitList {
+	//竞猜列表
+	repeated QuizItem quizList = 1;
+}
+
+//买球票
+message C2GS_BuyQuizTicket {
+	//购买数量
+	required int32 num = 1;
+}
+
+message GS2C_BuyQuizTicket {
+	//当前钻石数
+	required GameTeamInfo gameTeamInfo = 1;
+	//获得的彩球数
+	required PropRespVo propResp = 2;
+}
+
+//竞猜
+message C2GS_Quiz {
+	//竞猜的比赛id
+	required int32 id = 1;
+	//竞猜的项id(1-6)
+	required int32 itemId = 2;
+	//竞猜使用的球票数量
+	required int32 num = 3;
+}
+
+message GS2C_Quiz {
+	//竞猜的比赛id
+	required QuizItem item = 1;
+	//当前剩余球票数量
+	required PropRespVo propRespVo = 2;
+}
+
+//我的竞猜
+message C2GS_GetMyQuiz {
+	
+}
+
+message GS2C_GetMyQuiz {
+	//竞猜列表
+	repeated QuizItem quizList = 1;
+	//累计信息: 本月累计球票奖励
+	required int32 monthlyWin = 2;
+	//累计信息: 累计球票奖励
+	required int32 totalWin = 3;
+	//截至日期
+	required string dueTime = 4;
+}
+
+//领取竞猜奖励
+message C2GS_GetQuizReward {
+	//竞猜的比赛id
+	required int32 id = 1;	
+}
+
+message GS2C_GetQuizReward {	
+	//获得的球票数量
+	required PropRespVo propRespVo = 1;
+	//累计信息: 本月累计球票奖励
+	required int32 monthlyWin = 2;
+	//累计信息: 累计球票奖励
+	required int32 totalWin = 3;
+	
+}

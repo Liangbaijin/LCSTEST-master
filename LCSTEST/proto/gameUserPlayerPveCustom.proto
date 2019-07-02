@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+
+message GameUserPlayerPveCustom {
+	//小关卡id
+    optional int32 customId = 1;
+	
+	//类型编号(1-12)
+	optional int32 type = 4;
+
+    //是否为boss关卡（1 是  0不是）
+    optional int32 boss = 2;
+
+    //获取的星数(1-2-3)
+    optional string star = 3;
+	
+	//剩余扫荡次数
+    optional int32 sweepNum = 5;
+    
+	//已购买次数
+	optional int32 buySweepNum = 6;
+   
+}

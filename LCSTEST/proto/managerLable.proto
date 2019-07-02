@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+message ManagerLable {
+	optional string uid = 1;
+	
+	//标签类型(队徽旁边)
+	optional int32 headlableId1 = 2;
+	optional int32 headlableId2 = 3;
+	optional int32 headlableId3 = 4;
+	
+	//成就标签Id
+	optional int32 achievelableId1 = 5;
+	optional int32 achievelableId2 = 6;
+	optional int32 achievelableId3 = 7;
+	
+	
+}

@@ -1,0 +1,200 @@
+syntax = "proto2";
+
+
+import "propResp.proto";
+import "guildBaseInfo.proto";
+import "guildExtraInfo.proto";
+import "guildMemberInfo.proto";
+
+//获取公会信息
+message C2GS_GetGuildInfo {
+
+}
+
+message GS2C_GetGuildInfo {
+    //身份 0无公会 1普通成员 2会长 3副会长
+    required int32 status = 1;
+    //公会基本信息（如果有公会）
+    optional GuildBaseInfo guildBaseInfo = 2;
+    //公会额外信息（如果有公会）
+    optional GuildExtraInfo guildExtraInfo = 3;
+    //公会列表（如果没有公会）
+    repeated GuildBaseInfo guildSearchResultList = 4;
+    //申请倒计时（如果没有公会）
+    optional int32 remainTime = 5;
+}
+
+//搜索（刷新）公会列表
+message C2GS_SearchGuild {
+    //关键字
+    required string key = 1;
+}
+
+message GS2C_SearchGuild {
+    //搜索结果
+    repeated GuildBaseInfo guildSearchResultList = 1;
+}
+
+//申请加入公会（加入、一键加入）
+message C2GS_ApplyToJoinGuild {
+    //公会id列表
+    repeated int32 guildIdList = 1;
+}
+
+message GS2C_ApplyToJoinGuild {
+
+}
+
+//退出公会
+message C2GS_ExitGuild {
+
+}
+
+message GS2C_ExitGuild {
+    //公会列表（如果没有公会）
+    repeated GuildBaseInfo guildSearchResultList = 1;
+    //申请倒计时（如果没有公会）
+    optional int32 remainTime = 2;
+}
+
+//创建公会
+message C2GS_CreateGuild {
+    //会徽
+    required int32 label = 1;
+    //公会名字
+    required string name = 2;
+    //申请条件：俱乐部（0为无限制）
+    required int32 applyClub = 3;
+    //申请条件：经理人等级（0为无限制）
+    required int32 applyLevel = 4;
+    //申请条件：VIP等级（0为无限制）
+    required int32 applyVip = 5;
+    //公告
+    required string title = 6;
+}
+
+message GS2C_CreateGuild {
+    //公会基本信息
+    required GuildBaseInfo guildBaseInfo = 1;
+    //公会额外信息
+    required GuildExtraInfo guildExtraInfo = 2;
+}
+
+//修改公会信息
+message C2GS_EditTitle {
+    //修改公告
+    optional string title = 1;
+    //修改申请条件：俱乐部（0为无限制）
+    optional int32 applyClub = 2;
+    //修改申请条件：经理人等级（0为无限制）
+    optional int32 applyLevel = 3;
+    //修改申请条件：VIP等级（0为无限制）
+    optional int32 applyVip = 4;
+    //修改会徽
+    optional int32 label = 5;
+}
+
+message GS2C_EditTitle {
+    //敏感词过滤后的会长留言
+    optional string title = 1;
+    //敏感词过滤后的会内公告
+    optional string insideTitle = 2;
+}
+
+//公会升级
+message C2GS_GuildUplevel {
+
+}
+
+message GS2C_GuildUplevel {
+    //公会基本信息
+    required GuildBaseInfo guildBaseInfo = 1;
+    //公会额外信息
+    required GuildExtraInfo guildExtraInfo = 2;
+}
+
+//获取用户列表
+message C2GS_GetGuildMemberInfo {
+    //1获取会员 2获取入会申请人
+    required int32 type = 1;
+}
+
+message GS2C_GetGuildMemberInfo {
+    //会员列表
+    repeated GuildMemberInfo guildMemberInfoList = 1;
+}
+
+//会员管理
+message C2GS_ManagerMember {
+    //会员uid
+    required string uid = 1;
+    //操作类型 1移除公会 2升为副会 3移交会长 4同意入会 5拒绝入会
+    required int32 type = 2;
+}
+
+message GS2C_ManagerMember {
+
+}
+
+//进入公会捐赠页面
+message C2GS_GuildDonationInfo {
+    
+}
+
+message GS2C_GuildDonationInfo {
+    //普通捐赠状态 0未捐赠 1已捐赠
+    required int32 commonDonation = 1;
+    //高级捐赠状态 0未捐赠 1已捐赠
+    required int32 betterDonation = 2;
+    //豪华捐赠状态 0未捐赠 1已捐赠
+    required int32 bestDonation = 3;
+    //当前连续捐赠天数
+    required int32 donationDays = 4;
+    //今日公会总贡献
+    required int32 dailyContribution = 5;
+    //礼包1状态 1已开启 0未开启
+    required int32 package1 = 6;
+    //礼包2状态
+    required int32 package2 = 7;
+    //礼包3状态
+    required int32 package3 = 8;
+}
+
+//进行捐赠
+message C2GS_DoDonation {
+    //捐赠类型 1普通 2高级 3豪华
+    required int32 donationType = 1;
+}
+
+message GS2C_DoDonation {
+    //获得的贡献道具
+    required PropRespVo propRespVo = 1;
+    //今日公会总贡献
+    required int32 dailyContribution = 2;
+}
+
+//领取每日总贡献礼包
+message C2GS_ReceiveGuildDailyPackage {
+    //common_guild_package的id
+    required int32 id = 1;
+}
+
+message GS2C_ReceiveGuildDailyPackage {
+    //获得的道具
+    repeated PropRespVo propRespVo = 1;
+    //今日公会总贡献
+    required int32 dailyContribution = 2;
+}
+
+//公会建设-科技升级
+message C2GS_GuildUptech {
+    //科技类型 1成员上限增加 2贡献上限提升 3商品种类增加
+    required int32 type = 1;
+}
+
+message GS2C_GuildUptech {
+    //公会基本信息
+    required GuildBaseInfo guildBaseInfo = 1;
+    //公会额外信息
+    required GuildExtraInfo guildExtraInfo = 2;
+}

@@ -1,0 +1,66 @@
+syntax = "proto2";
+
+import "playerStatistics.proto";
+import "achievementIdNum.proto";
+
+// 单个队伍的每回合比赛结果(回合累加)
+message TeamResult {
+
+    //射门次数
+    optional int32 overallShootNum = 1;
+
+    //射正次数
+    optional int32 shootOnTargetNum = 2;
+
+    //控球率
+    optional int32 ballPossession = 3;
+
+    //传球成功率
+    optional int32 passSuccess = 4;
+
+    //抢断次数
+    optional int32 stealNum = 5;
+
+    //解围次数
+    optional int32 clearanceKickNum = 6;
+
+    //门将扑救次数
+    optional int32 saveNum = 7;
+
+    //得分(正常回合 + 加时赛)
+    optional int32 score = 8;
+
+    //球员个人统计
+    repeated PlayerStatistics playerStatistics = 9;
+
+    //最终得分(正常回合 + 加时赛 + 点球大战)
+    optional int32 finalScore = 10;
+
+    //球队已经完成成就统计结果
+    repeated AchievementIdNum teamAchievement = 11;
+
+    //角球
+    optional int32 cornerKickNum = 12;
+
+    //任意球
+    optional int32 freeKickNum = 13;
+
+    //红牌
+    optional int32 redCardNum = 14;
+
+    //黄牌
+    optional int32 yellowCardNum = 15;
+	
+	//犯规数
+    optional int32 foulNum = 16;
+
+    //战力
+    //前场战力
+    optional double frontcourtCapacity = 17;
+
+    //中场战力
+    optional double middlecourtCapacity = 18;
+
+    //后场战力
+    optional double backcourtCapacity = 19;
+}

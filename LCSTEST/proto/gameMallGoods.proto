@@ -1,0 +1,57 @@
+syntax = "proto2";
+
+message GameMallGoods {
+	//商品栏位
+	optional int32 field = 20;
+
+	//id
+    optional int32 id = 1;
+
+    //商品的名字
+    optional string name = 3;
+
+    //商品的图片
+    optional string icon = 4;
+
+    //商品的ID(common_package表的id)
+    optional string goods  = 5;
+
+    //商品的数量
+    optional int32 goodsNum = 6;
+
+    //商品权重（默认权重为1）
+    optional int32 goodsWeight = 7;
+	
+	//商品类型商品类型（1普通商品  2限时商品）
+	optional int32 goodsType = 17;
+
+    //商品购买消耗道具的id
+    optional int32 priceId = 8;
+
+    //购买此物品消耗的道具数量（折前的价格  如果不打折为0）
+    optional int32 price = 9;
+
+    //打折对应的图片id
+    optional int32 discountId = 10;
+
+    //折后价格 （真实的购买道具的价格）
+    optional int32 discountPrice = 11;
+
+    //商品需求vip的等级
+    optional int32 vipLevel = 12;
+
+    //限购类型 1当天购买  2本周购买
+    optional int32 buyType = 13;
+
+    //限购次数
+    optional int32 buyCount = 14;
+	
+	//还可以购买的次数
+	optional int32 canBuyCount = 18;
+
+    //开始时间
+    optional int64 timeStart = 15;
+
+    //结束时间
+    optional int64 timeEnd = 16;
+}

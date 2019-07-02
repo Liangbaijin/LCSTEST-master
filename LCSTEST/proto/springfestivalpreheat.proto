@@ -1,0 +1,107 @@
+syntax = "proto2";
+
+import "gameTeamInfo.proto";
+import "gameProperty.proto";
+import "propResp.proto";
+
+message C2GS_GetSpringFestivalPreheatTask {
+
+}
+
+message GS2C_GetSpringFestivalPreheatTask {
+
+	required string title = 1;
+
+	required int32 remainTime = 2;
+
+	repeated int32 unlockTypeList = 3;
+	
+	repeated SpringFestivalPreheatTask  taskList = 4;
+
+	required int32 mallId = 5;
+}
+
+message SpringFestivalPreheatTask {
+
+	required int32 taskId = 1;
+	//状态0未领取 1已领取
+	required int32 status = 2;
+	//已完成次数
+	required int32 done = 3;
+}
+
+message C2GS_GetSpringFestivalPreheatPlayer {
+	
+}
+
+
+message GS2C_GetSpringFestivalPreheatPlayer {
+	
+	required string title = 1;
+
+	required int32 remainTime = 2;
+	// 每阶段会清空
+	repeated int32 unlockRewardId = 3;
+	// 当前解锁阶段 一开始为5 全通为 0 
+	required int32 stage = 4;
+	// 已经购买的奖励id列表
+	repeated int32 buyRewardId = 5;
+}
+
+message C2GS_SpringFestivalBlessCombine {
+	// 球衣数
+	required int32 cloth = 1;
+	// 鞋子数
+	required int32 shoes = 2;
+	// 裤子数
+	required int32 trousers = 3;
+}
+
+message GS2C_SpringFestivalBlessCombine {
+
+	optional PropRespVo propRespVo = 1;
+
+	optional int32 unlockType = 2;
+
+	repeated GameProperty gameProperty = 3;
+}
+
+message C2GS_CompleteSpringFestivalTask {
+
+	required int32 taskId = 1;
+}
+
+message GS2C_CompleteSpringFestivalTask {
+	// 
+	repeated PropRespVo propRespVo = 1;
+	//
+	optional GameTeamInfo gameTeamInfo = 2;
+}
+
+message C2GS_UnlockSpringFestivalPlayer {
+	// 解锁的奖励id
+	required int32 rewardId = 1;
+}
+
+message GS2C_UnlockSpringFestivalPlayer {
+	// 道具信息
+	repeated GameProperty gameProperty = 1;
+	// 可能会更新层数
+	optional int32 stage = 2;
+}
+
+message C2GS_BuySpringFestivalPlayer {
+
+	required int32 rewardId = 1;
+}
+
+message GS2C_BuySpringFestivalPlayer {
+
+	required PropRespVo propRespVo = 1;
+
+	optional GameTeamInfo gameTeamInfo = 2;
+}
+
+message C2GS_SpringFestivalPreheatShare {
+	
+}

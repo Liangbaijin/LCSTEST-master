@@ -1,0 +1,34 @@
+syntax = "proto2";
+
+import "propResp.proto";
+
+message GamePracticeCompetition {
+	// 当前步奏 common_practice_daily_detail 中的id
+	required int32 step = 1;
+
+	// 总加成数
+	required int32 bufferValue = 2;				
+	
+	// 每日信息
+	repeated GamePracticeDailyInfo dailyInfos = 3;		
+	
+	// 最终总奖励
+	repeated PropRespVo finalReward = 4;
+
+	// 比赛id
+	required int32 competitionId = 5;
+}
+
+message GamePracticeDailyInfo {
+	// common_practice_daily_detail 中的id
+	required int32 dailyDetailId = 1;
+
+	// 当日类型 0无事件 1定制比赛计划 2普通训练赛 3赛后调整	
+	required int32 type = 2;			
+	
+	// 0未达到 1经过（显示圆圈） 2跳过（显示横线）
+	required int32 status = 3;			
+	
+	// 0无状态 1胜利 2失败 
+	optional int32 winType = 4; 		
+}

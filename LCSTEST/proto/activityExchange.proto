@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+message ExchangeActivity {
+	// 活动id
+	required int32 activityId = 1;
+	// 活动标题
+	required string activityTitle = 2;
+	// 活动描述
+	required string activityDesc = 3;
+	// 开始时间
+	required string startTime = 4;
+	// 结束时间
+	required string endTime = 5;
+	// 商品信息
+	repeated ExchangeProduct products = 6;
+}
+
+message ExchangeProduct {
+	// 商品id
+	required int32 productId = 1;
+	// 兑换消耗 type-id-num|type..
+	required string productCost = 2;
+	// type-id-num 获取的奖励
+	required string product = 3;
+	// 已兑换次数
+	required int32 exchangeCount = 4;
+	// 总兑换次数
+	required int32 totalExchangeCount = 5;
+}

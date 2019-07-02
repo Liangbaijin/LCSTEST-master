@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+import "gamePlayerBattle.proto";
+import "gamePlayerInstance.proto";
+import "gameUserTacticsInfo.proto";
+import "gamePlayerResponsibility.proto";
+
+// 球队信息
+message TeamClient {
+
+    // 是否机器人(true为机器人, false为玩家)
+    optional bool isRobot = 1 [default = false];
+
+    // 玩家本场阵容
+    optional GamePlayerBattle gamePlayerBattle = 2;
+	
+	// 球员信息
+	repeated GamePlayerInstance gamePlayerInstance = 3;
+
+    // 战术
+	required GameUserTacticsInfo gameUserTacticsInfo = 4;
+
+    // 职责
+	repeated GamePlayerResponsibility gamePlayerResponsibility = 5;
+
+}

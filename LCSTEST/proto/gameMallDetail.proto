@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+import "gameMallGoods.proto";
+
+message GameMallDetail {
+	//商城id
+	required int32 mallId = 1;
+	// 商城类型 1普通商城  2限时商城 3普通招募兑换商城 4限时招募兑换商城
+	required int32 mallType = 2;
+	//物品列表
+	repeated GameMallGoods gameMallGoods = 3;
+	//已经刷新的次数
+	optional int32 refreshNum = 4;
+	//刷新倒计时
+	optional int32 countDown = 5;
+	// 总共的刷新次数
+	optional int32 totalRefreshNum = 6;
+	// 对应道具累计消耗表中的type
+	optional int32 addUpCostType = 7;
+	// 资源条对应物品id
+	optional int32 costId = 8;
+	// 结束时间
+	optional int64 endTime = 9;
+}

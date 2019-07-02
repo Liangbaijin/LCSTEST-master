@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+// 额外比赛启动条件
+message ExtraMatchCondition {
+
+    // 是否需要加时赛(不需要为0; 需要加时赛为1)
+    required int32 needExtraTime = 1;
+
+    // 是否需要点球大战(不需要为0; 需要点球大战为1)
+    required int32 needPenaltyShootOut = 2;
+
+    // 该场比赛需要满足的主队净胜球条件
+    required int32 homeGoalDifference = 3;
+    
+    // 该场比赛需要满足的主队进球数(如果非多循环赛, 仅一场比赛定胜负, 将此值置为-1)
+    required int32 homeGoalsNum = 4;
+
+    // 是否需要一个或多个额外的非空回合(比如, lcs游戏缘分达成一定的条件, 会多一个非空回合), 默认为0个额外非空回合
+    required int32 extraNonEmptyRounds = 5 [default = 0];
+
+    // 是否需要赛中得牌, 包括红牌和黄牌(不需要为0; 需要赛中得牌为1)
+    required int32 needCard = 6 [default = 0];
+
+    // 是否需要赛中重伤(不需要为0; 需要重伤为1)
+    required int32 needSevereInjure = 7 [default = 0];
+
+    // 是否需要赛中自动自由换人(不需要为0; 需要自由换人为1)
+    required int32 needAutoFreeFormationChange = 8 [default = 0];
+
+    // 受伤保护系数
+    optional float injureChanceCoefficient = 9 [default = 0.75];
+}

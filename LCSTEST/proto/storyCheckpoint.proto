@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+//关卡信息
+message StoryCheckpoint{
+	//关卡编号
+	required int32 id = 1;
+	//最高通关星级数（1，2，3）
+	required int32 stars = 2;
+	//今日已挑战次数
+	required int32 times = 3;
+	//今日已重置次数
+	required int32 reset = 4;
+}

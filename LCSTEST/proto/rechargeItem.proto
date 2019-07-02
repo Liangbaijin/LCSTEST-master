@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+//充值档位
+message RechargeItem {
+	//ID
+	required int32 id = 1;
+	//PID
+	required string pid = 2;
+	//金额（折前金额）
+	required int32 money = 3;
+	//基础钻石数
+	required int32 amount = 4;
+	//图片
+	required string icon = 5;
+	//类型 0钻石包 1月卡 2成长基金
+	required int32 type = 6;
+	//标签 0无标签 1首充 2双倍 3折扣
+	required int32 label = 7;
+	//折扣后的金额（label=3时出现）
+	optional int32 discountedMoney = 8;
+	//月卡赠送的钻石数（type=1时出现）
+	optional int32 largess = 9;
+}

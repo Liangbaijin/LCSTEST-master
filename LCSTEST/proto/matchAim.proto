@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+import "playerPveAim.proto";
+import "tourPveAim.proto";
+
+// 比赛挑战的目标详情
+message MatchAim{
+
+	// 球星生涯挑战目标
+	optional PlayerPveAim playerPveAim = 1;
+	
+	// 故事生涯挑战关卡id
+	optional int32 id = 2;
+	
+	// 排名赛被挑战uid
+	optional string uid = 3;
+	
+	// 巡回赛挑战目标
+	optional TourPveAim tourPveAim = 4;
+}

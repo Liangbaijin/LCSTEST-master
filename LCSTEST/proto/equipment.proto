@@ -1,0 +1,242 @@
+syntax = "proto2";
+
+import "equipmentResp.proto";
+import "propResp.proto";
+import "gameTeamInfo.proto";
+import "gameUserEquipment.proto";
+import "gamePlayerInstance.proto";
+import "equipAndDebrisResp.proto";
+
+//装备升级
+message C2GS_EquipUpLevel {
+	//唯一装备的ID;卸载装备的ID
+	required int32 equipId = 1;
+	
+	//升N级(升级传相应的升多少级，升星填0)
+	required int32 upLevel = 2;
+	
+	//升级升星传0。穿装备对应球员唯一ID
+	required int32 playerId = 3;
+	
+	//升星所需装备列表唯一ID。 装备更换AE换BE:A球员原穿装备AE(equipId)，B球员原穿装备BE(costEquipId),upLevel传0
+	repeated int32 costEquipId = 4; 
+}
+
+//返回装备升级
+message GS2C_EquipUpLevel {
+	optional EquipmentRespVo equipmentRespVo = 1;
+	
+}
+
+//装备升星
+message C2GS_EquipUpStar {
+	//唯一装备的ID;卸载装备的ID
+	required int32 equipId = 1;
+	
+	//升N级(升级传相应的升多少级，升星填0)
+	required int32 upLevel = 2;
+	
+	//升级升星传0。穿装备对应球员唯一ID
+	required int32 playerId = 3;
+	
+	//升星所需装备列表唯一ID。 装备更换AE换BE:A球员原穿装备AE(equipId)，B球员原穿装备BE(costEquipId),upLevel传0
+	repeated int32 costEquipId = 4; 
+}
+//返回装备升星
+message GS2C_EquipUpStar {
+	optional EquipmentRespVo equipmentRespVo = 1;
+	
+}
+
+//装备技能升级
+message C2GS_EquipUpSkill {
+	//装备的ID;
+	required int32 equipId = 1;
+	
+	//技能的序号 1 or 2
+	required int32 order = 2;
+}
+
+message GS2C_EquipUpSkill {
+	//装备的详情  
+    required GameUserEquipment equipRespVo = 1;
+	
+	//玩家信息  
+    required GameTeamInfo gameTeamInfoRespVo = 2;
+	
+	//道具
+	repeated PropRespVo propRespVo = 3;
+	
+	//影响的球员
+	optional GamePlayerInstance gamePlayerInstance = 4;
+}
+
+//装备技能解锁
+message C2GS_EquipSkillUnlock {
+	//装备的ID;
+	required int32 equipId = 1;
+	
+	//技能的序号 1 or 2
+	required int32 order = 2;
+}
+
+message GS2C_EquipSkillUnlock {
+	//装备的eid
+	required int32 skillEid = 1;
+}
+
+//装备技能刷新
+message C2GS_RefreshEquipSkill {
+	//装备的ID;
+	required int32 equipId = 1;
+	
+	//锁住的技能序号
+	optional int32 order = 2;
+}
+
+message GS2C_RefreshEquipSkill {
+	//技能1的eid
+	optional int32 skill1Eid = 1;
+	
+	//技能2的eid
+	optional int32 skill2Eid = 2;
+	
+	//玩家信息  
+    required GameTeamInfo gameTeamInfoRespVo = 3;
+	
+	//道具
+	repeated PropRespVo propRespVo = 4;
+}
+
+//保存刷新结果
+message C2GS_SaveSkill {
+
+}
+
+message GS2C_SaveSkill {
+	//装备的详情
+    required GameUserEquipment equipRespVo = 1;
+	
+	//影响的球员
+	optional GamePlayerInstance gamePlayerInstance = 2;
+}
+
+//卸下装备
+message C2GS_UnloadEquip {
+	//唯一装备的ID;卸载装备的ID
+	required int32 equipId = 1;
+	
+	//升N级(升级传相应的升多少级，升星填0)
+	required int32 upLevel = 2;
+	
+	//升级升星传0。穿装备对应球员唯一ID
+	required int32 playerId = 3;
+	
+	//升星所需装备列表唯一ID。 装备更换AE换BE:A球员原穿装备AE(equipId)，B球员原穿装备BE(costEquipId),upLevel传0
+	repeated int32 costEquipId = 4; 
+}
+//返回卸下装备
+message GS2C_UnloadEquip {
+	optional EquipmentRespVo equipmentRespVo = 1;
+	
+}
+
+//装备更换
+message C2GS_SwitchEquip {
+	//唯一装备的ID;卸载装备的ID
+	required int32 equipId = 1;
+	
+	//升N级(升级传相应的升多少级，升星填0)
+	required int32 upLevel = 2;
+	
+	//升级升星传0。穿装备对应球员唯一ID
+	required int32 playerId = 3;
+	
+	//升星所需装备列表唯一ID。 装备更换AE换BE:A球员原穿装备AE(equipId)，B球员原穿装备BE(costEquipId),upLevel传0
+	repeated int32 costEquipId = 4; 
+}
+//返回装备更换
+message GS2C_SwitchEquip {
+	optional EquipmentRespVo equipmentRespVo = 1;
+	
+}
+
+//装备碎片出售
+message C2GS_SaleEquipDebris {
+	//碎片id
+	required int32 debrisId = 1;
+	//碎片数量
+	required int32 debrisNum = 2;
+}
+
+message GS2C_SaleEquipDebris {
+	//出售得到的欧元
+	repeated PropRespVo propRespVoList = 1;
+}
+
+//装备回收
+message C2GS_SaleEquip {
+	//装备id
+	repeated int32 equipId = 1;
+}
+
+message GS2C_SaleEquip {
+	//回收得到的道具
+	repeated PropRespVo propRespVoList = 1;
+}
+
+//装备重生
+message C2GS_RebornEquip {
+	//装备id
+	required int32 equipId = 1;
+}
+
+message GS2C_RebornEquip {
+	//重生得到的道具
+	repeated PropRespVo propRespVoList = 1;
+	//更新经理人信息
+	optional GameTeamInfo gameTeamInfo = 2;
+}
+
+//装备碎片合成
+message C2GS_CombineEquipDebris{
+	//碎片id
+	required int32 debrisId = 1;
+}
+
+message GS2C_CombineEquipDebris{
+	//装备信息和碎片信息
+	optional EquipAndDebrisRespVo respVo = 1;
+}
+
+//批量装备装备
+message C2GS_EquipmentsEquip {
+	// 批量装备的装备id
+	repeated int32 equipId = 1;
+	// 球员id
+	required int32 playerId = 2;
+}
+
+message GS2C_EquipmentsEquip {
+	// 所有受印象的装备列表
+	repeated GameUserEquipment chanagedEquipments = 1;
+
+	//影响的球员
+	optional GamePlayerInstance gamePlayerInstance = 2;
+}
+
+message C2GS_EquipmentsLevelUp {
+	// 装备升级的目标等级
+	optional int32 equipmentLevel = 1;
+	// 球员id
+	optional int32 playerId = 2;
+}
+
+message GS2C_EquipmentsLevelUp {
+	// 球员属性
+	optional GamePlayerInstance playerInstance = 1;
+	// 装备列表
+	repeated GameUserEquipment chanagedEquipments = 2;
+	// 战队信息
+	optional GameTeamInfo gameTeamInfo = 3;
+}

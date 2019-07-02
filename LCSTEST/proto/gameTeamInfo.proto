@@ -1,0 +1,66 @@
+syntax = "proto2";
+
+message GameTeamInfo {
+	//登陆状态
+	optional int32 status = 1;
+	
+	//玩家角色名称
+	optional string roleName = 2;  
+	
+	//玩家角色等级
+	optional int32 level = 3;
+	
+	//玩家角色经验
+	optional int32 experience = 4;
+	
+	//欧元数
+	optional int32 coin = 5;
+	
+	//钻石数
+	optional int32 diamond = 6;
+	
+	//当前体力值
+	optional int32 tili = 7;
+	
+	//用户俱乐部id
+	optional int32 club = 8;
+	
+	//队标
+	optional int32 icon = 9;
+	
+	//上次体力恢复时间
+	optional string tiliReplyTime = 10;
+	
+	//vip等级
+	optional int32 vip = 11;
+	
+	//vip经验 只在登录和充值的回调里传递
+	optional int32 vipExp = 12;
+	
+	//对应的uid
+	optional string uid = 14;
+	
+	//是否在线 1是 0否
+	optional int32 online = 15;
+	
+	//主场球衣
+	optional int32 homeFieldPoloShirt = 21;
+    
+	//客场球衣
+    optional int32 visitingFieldPoloShirt = 22;
+	
+	//体力购买次数 只在登录和购买体力的回调里传递
+	optional int32 tiliBuyTimes = 23;
+	
+	//首充是否可用 0不可用 1可用 只在登录和充值的回调里传递
+	optional int32 firstRecharge = 24;
+	
+	//战力显示 只在登录、好友信息时传递
+	optional int32 zhanli = 25;
+
+	//引导步骤
+	optional string guideStep = 26;
+
+	//玩家球员数量上限等级
+	optional int32 playerNumLimitLevel = 27;
+}

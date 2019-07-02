@@ -1,0 +1,53 @@
+syntax = "proto2";
+
+message GamePlayerBattle {
+	required int32 battleArrayId = 1;
+
+    required string uid = 2;
+
+    required int32 formationId = 3;
+
+    required int32 position1 = 4;
+
+    required int32 position2 = 5;
+
+    required int32 position3 = 6;
+
+    required int32 position4 = 7;
+
+    required int32 position5 = 8;
+
+    required int32 position6 = 9;
+
+    required int32 position7 = 10;
+
+    required int32 position8 = 11;
+
+    required int32 position9 = 12;
+
+    required int32 position10 = 13;
+
+    required int32 position11 = 14;
+
+    required int32 position12 = 15;
+
+    required int32 position13 = 16;
+
+    required int32 position14 = 17;
+
+    required int32 position15 = 18;
+
+    required int32 position16 = 19;
+
+    required int32 position17 = 20;
+
+    required int32 position18 = 21;
+
+    required int32 position19 = 22;
+
+    required int32 position20 = 23;
+
+    required int32 position21 = 24;
+
+    required int32 battleArrayZhanli = 25; 
+}

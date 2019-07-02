@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+message GameUserDaySignInPackage {
+	//用户签到的次数
+    optional int32 dayTime = 1; 
+
+    //已经领取礼包ID(礼包id-礼包id)
+    optional string packageId = 2;
+}

@@ -1,0 +1,186 @@
+syntax = "proto2";
+
+import "gameFriends.proto";
+import "gameTeamInfo.proto";
+import "propResp.proto";
+import "friendlyMatchHistory.proto";
+
+//获取好友列表
+message C2GS_GetFriends{
+	//排序规则 1等级（好友）  2在线、离线时间（聊天）
+	required int32 type = 1;
+}
+
+message GS2C_GetFriends{
+	//好友列表
+	repeated GameFriends gameFriends = 1;
+	//剩余领取次数
+	optional int32 receiveTimes = 2;
+	//剩余赠送次数
+	optional int32 giveTimes = 3;
+}
+
+//申请好友
+message C2GS_Apply{
+	//申请目标uid
+	repeated string uid = 1;
+}
+
+message GS2C_Apply{
+
+}
+
+//一键通过好友申请
+message C2GS_ApplyAll {
+
+}
+
+message GS2C_ApplyAll {
+	//申请人列表
+	repeated GameFriends applyList = 1;
+	//好友数量
+	required int32 num = 2;
+}
+
+//获取申请列表
+message C2GS_GetApplicants{
+
+}
+
+message GS2C_GetApplicants{
+	//申请人列表
+	repeated GameFriends gameFriends = 1;
+}
+
+//拒绝好友申请
+message C2GS_RefuseApply{
+	//目标uid
+	repeated string uid = 1;
+}
+
+message GS2C_RefuseApply{
+
+}
+
+//接受好友申请
+message C2GS_AcceptApply{
+	//目标uid
+	required string uid = 1;
+}
+
+message GS2C_AcceptApply{
+	//好友数量
+	required int32 num = 1;
+}
+
+//搜索、换一批
+message C2GS_Search{
+	//搜索关键字，如果是换一批则不用
+	optional string key = 1;
+}
+
+message GS2C_Search{
+	repeated GameFriends gameFriends = 1;
+}
+
+//删除好友
+message C2GS_DeleteFriend{
+	//目标好友的uid
+	required string uid = 1;
+}
+
+message GS2C_DeleteFriend{
+	
+}
+
+//领取好友赠送的礼包
+message C2GS_ReceiveGift{
+	//目标好友的uid
+	required string uid = 1;
+}
+
+message GS2C_ReceiveGift{
+	//领取得到的道具
+	repeated PropRespVo propRespVoList = 1;
+	//剩余领取次数
+	required int32 receiveTimes = 2;
+}
+
+//一键领取
+message C2GS_ReceiveAllGifts{
+
+}
+
+message GS2C_ReceiveAllGifts{
+	//领取得到的道具列表
+	repeated PropRespVo propRespVoList = 1;
+	//剩余领取次数
+	required int32 receiveTimes = 2;
+}
+
+//赠送给好友礼包
+message C2GS_GiveGift{
+	//目标好友的uid
+	required string uid = 1;
+}
+
+message GS2C_GiveGift{
+	//剩余赠送次数
+	required int32 giveTimes = 1;
+}
+
+//一键赠送
+message C2GS_GiveAllGifts{
+
+}
+
+message GS2C_GiveAllGifts{
+	//剩余赠送次数
+	required int32 giveTimes = 1;
+}
+
+//有好友申请或好友赠送的提示
+message GS2C_Remind{
+	//1：好友申请，2：好友赠送
+	required int32 type = 1;
+}
+
+//好友离线、登录时推送
+message GS2C_ChatFriendsRemind{
+	//1登录 2离线
+	required int32 type = 1;
+	//好友信息
+	required GameTeamInfo gameTeamInfo = 2;
+}
+
+//开关
+message C2GS_SwitchOfChatFriendsRemind{
+	//1开 2关
+	required int32 type = 1;
+}
+
+message GS2C_SwitchOfChatFriendsRemind{
+
+}
+
+//发起友谊赛
+message C2GS_StartFriendlyMatch {
+	//好友uid
+	required string friendUid = 1;
+}
+
+message GS2C_StartFriendlyMatch {
+	//比赛id
+	required int32 matchId = 1;
+	//比赛type
+	required int32 matchType = 2;
+}
+
+//获取友谊赛历史记录
+message C2GS_GetFriendlyMatchHistory {
+
+}
+
+message GS2C_GetFriendlyMatchHistory {
+	repeated FriendlyMatchHistory friendlyMatchHistoryList = 1;
+}

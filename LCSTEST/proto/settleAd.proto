@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+import "gameUserAdvertMedia.proto";
+
+// 结算结果-广告商
+message SettleAd{
+
+	//结果(1成功 0失败)
+	required int32 result = 1;
+	
+	//广告位详情
+	optional GameUserAdvertMedia gameUserAdvertMedia = 2;
+}

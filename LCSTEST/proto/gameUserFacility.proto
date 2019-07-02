@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+
+message GameUserFacility {
+	
+	required int32 type = 1;
+	
+	required int32 level = 2;
+
+	optional int32 upgradeEndTime = 3;  // 升级中会给予剩余升级时间秒数
+}

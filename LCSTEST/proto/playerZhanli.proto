@@ -1,0 +1,38 @@
+syntax = "proto2";
+message PlayerZhanli {
+	//射门
+	optional int32 shemen = 1;
+	
+	//传球
+	optional int32 chuanqiu = 2;
+	
+	//盘带
+	optional int32 pandai = 3;
+	
+	//解围
+	optional int32 jiewei = 4;
+	
+	//抢断
+	optional int32 qiangduan = 5;
+	
+	//盯人
+	optional int32 dingren = 6;
+	
+	//扑救
+	optional int32 pujiu = 7;
+	
+	//出击
+	optional int32 chuji = 8;
+	
+	//开球
+	optional int32 kaiqiu = 9;
+	
+	//反应
+	optional int32 fanying = 10;
+	
+	//视野
+	optional int32 shiye = 11;
+	
+	//站位
+	optional int32 zhanwei = 12;
+}

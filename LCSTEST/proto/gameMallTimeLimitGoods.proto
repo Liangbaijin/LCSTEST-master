@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+message GameMallTimeLimitGoods {
+	//ID
+    optional int32 id = 1;
+
+    //图片icon
+    optional int32 icon = 2;
+
+    //限时商品活动类型  1常驻  2限时
+    optional int32 type = 3;
+
+    //开始时间
+    optional string timeStart = 4;
+
+    //结束时间
+    optional string timeEnd = 5;
+
+    //跳转路径
+    optional string jump = 6;
+}

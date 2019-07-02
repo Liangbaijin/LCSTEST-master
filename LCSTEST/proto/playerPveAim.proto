@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+// 球星生涯挑战目标
+message PlayerPveAim{
+
+	//章节id
+	required int32 sectionId = 1;
+	
+	//类型编号（1-12）
+	required int32 type = 2;
+	
+	//小关卡id
+	required int32 custom = 3;
+	
+}

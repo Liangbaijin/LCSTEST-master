@@ -1,0 +1,52 @@
+syntax = "proto2";
+
+import "gameTeamInfo.proto";
+import "gameUserVipPackage.proto";
+import "propResp.proto";
+
+//获取vip礼包状态
+message C2GS_GetVipPackageStatus {
+
+}
+
+message GS2C_GetVipPackageStatus {
+	//所有档位vip礼包状态（只返回玩家所属俱乐部）
+	repeated GameUserVipPackage gameUserVipPackageList = 1;
+}
+
+//购买vip礼包
+message C2GS_BuyVipPackage {
+	//id
+	required int32 id = 1;
+}
+
+message GS2C_BuyVipPackage {
+	//该档vip礼包状态
+	required GameUserVipPackage gameUserVipPackage = 1;
+	//获得的道具
+	repeated PropRespVo propRespVoList = 2;
+	//购买后的玩家信息
+	required GameTeamInfo gameTeamInfo = 3;
+}
+
+//获取vip福利礼包领取状态
+message C2GS_GetVipWelfareStatus {
+
+}
+
+message GS2C_GetVipWelfareStatus {
+	//当前vip等级的福利礼包领取状态 0未领取 1已领取
+	required int32 status = 1;
+	//vip信息
+	required GameTeamInfo gameTeamInfo = 2;
+}
+
+//领取当日vip福利礼包
+message C2GS_ReceiveVipWelfare {
+
+}
+
+message GS2C_ReceiveVipWelfare {
+	//获得的道具
+	repeated PropRespVo propRespVoList = 1;
+}

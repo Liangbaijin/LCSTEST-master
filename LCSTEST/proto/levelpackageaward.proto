@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+import "propResp.proto";
+
+
+//获取等级礼包领取信息
+message C2GS_GetLevelPackage{
+	
+}
+
+message GS2C_GetLevelPackage{
+	//已经领取的id列表
+	repeated int32 idList = 1;
+}
+
+//领取等级礼包
+message C2GS_GetLevelPackageAward{
+	//等级礼包列表的id（不是packageId）
+	required int32 awardId = 1;
+}
+
+message GS2C_GetLevelPackageAward{
+	//获得道具列表
+	repeated PropRespVo propRespVo = 2;
+}

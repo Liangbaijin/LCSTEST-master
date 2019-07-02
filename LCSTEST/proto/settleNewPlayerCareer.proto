@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+import "newPlayerCareerChapter.proto";
+import "newPlayerCareerCheckpoint.proto";
+import "teaminfoAndPropListResp.proto";
+import "propResp.proto";
+
+message SettleNewPlayerCareer {
+	
+	// 小关卡获取星
+	optional NewPlayerCareerCheckpointInfo playerCareerCheckpointInfo = 1;
+	
+	// 此章节信息
+	optional NewPlayerCareerChapterInfo playerCareerChapterInfo = 2;
+	
+	// 战队以及奖励
+	optional TeamInfoAndPropListRespVo teamInfoAndPropListRespVo = 3;
+	
+	// 特殊奖励
+	optional PropRespVo propRespVo = 4;
+
+	// 挑战结果 1成功 0失败
+	required int32 result = 5;
+}

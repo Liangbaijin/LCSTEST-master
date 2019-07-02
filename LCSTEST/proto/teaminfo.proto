@@ -1,0 +1,130 @@
+syntax = "proto2";
+
+import "gameTeamInfo.proto";
+import "propResp.proto";
+
+//更改名称
+message C2GS_ChangeTeamName {
+	//更改的名字
+	optional string name = 1;
+}
+message GS2C_ChangeTeamName {
+	//经理人信息
+	optional GameTeamInfo gameTeamInfo = 4;
+}
+
+//更改队标
+message C2GS_ChangeIcon {
+	//更改的id
+	required int32 id = 1;
+}
+message GS2C_ChangeIcon {
+	//经理人信息
+	optional GameTeamInfo gameTeamInfo = 4;
+	//用户拥有队的id id-id
+	optional string id = 5;
+}
+
+//更改球衣
+message C2GS_ChangePoloShirt {
+	//更改的id
+	required int32 id = 1;
+	//更换球衣类型 1 主场   2客场
+	required int32 type = 2;
+}
+message GS2C_ChangePoloShirt {
+	//经理人信息
+	optional GameTeamInfo gameTeamInfo = 4;
+	//用户拥有球衣id id-id
+	optional string poloShirtId = 5;
+}
+
+//获取球衣
+message C2GS_OpenPoloShirt {
+	//获取球衣类型 1 主场   2客场
+	required int32 type = 2;
+}
+message GS2C_OpenPoloShirt {
+	//用户拥有球衣id id-id
+	optional string poloShirtId = 4;
+}
+
+//获取队标
+message C2GS_OpenTeamLogo {
+	
+}
+message GS2C_OpenTeamLogo {
+	//用户拥有队的id id-id
+	optional string id = 5;
+}
+
+//购买队标
+message C2GS_BuyTeamLogo {
+	//购买的队标id
+	required int32 id = 1;
+}
+
+message GS2C_BuyTeamLogo {
+	//经理人信息
+	optional GameTeamInfo gameTeamInfo = 4;
+	//用户拥有队标的id id-id
+	optional string id = 5;
+}
+
+//购买球衣
+message C2GS_BuyPoloShirt {
+	//购买的球衣id
+	required int32 id = 1;
+	//更换球衣类型 1 主场   2客场
+	required int32 type = 2;
+}
+//
+message GS2C_BuyPoloShirt {
+	//经理人信息
+	optional GameTeamInfo gameTeamInfo = 4;
+	//用户拥有球衣id id-id
+	optional string poloShirtId = 5;
+}
+
+//打开赞助商首页
+message C2GS_OpenSponsor {
+	
+}
+message GS2C_OpenSponsor {
+	//剩余购买次数
+	required int32 surplusBuyNum = 1;
+}
+
+//用钻石购买欧元
+message C2GS_BuyCoin {
+	
+}
+//返回钻石购买欧元 
+message GS2C_BuyCoin {
+
+    //额外的获得欧元的倍率实际值 *100，需要用到时除以100, 
+    required int32 coinMultiplyingPower = 2;
+	//经理人信息
+	optional GameTeamInfo gameTeamInfo = 3;
+}
+
+// 引导步数更新
+message C2GS_UpdateStep {
+	required string step = 1;
+}
+
+message GS2C_UpdateStep {
+	optional int32 result = 1; 	// 0表示成功
+}
+
+// 球员最大上限升级
+message C2GS_PlayerNumUpgrade{
+
+}
+
+message GS2C_PlayerNumUpgrade{
+	// 最新战队信息
+	optional GameTeamInfo gameTeamInfo = 1;
+	//道具剩余列表(当消耗道具不是钻石或欧元时返回)
+	optional PropRespVo consumeProp = 2;
+}

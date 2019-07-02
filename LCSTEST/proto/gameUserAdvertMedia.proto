@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+message GameUserAdvertMedia {
+
+    //common_advert_media中id
+    required int32 advertMediaId = 1;
+
+    //正在拍摄广告的球员id（没有球员表示为0）
+    required int32 playerId = 3;
+
+    //是否有特殊事件（1有 0没有）
+    required int32 specialEvent = 4;
+	
+	//是否双倍(1是  0不是))
+	required int32 isDouble = 5;
+	
+    //额外奖励条件表id1  
+    required int32 extraAwardCod1 = 6;
+
+    //广告拍摄结束的剩余时间
+    required int64 endTime = 8;
+	
+	//下次更新额外奖励条件的剩余时间
+	required int64 changeExtTime = 9;
+}

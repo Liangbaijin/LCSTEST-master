@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+message GameUserTacticsInfo {
+	//战术id（1全力进攻  2攻防平衡  100预设战术）
+    optional int32 tacticsId = 1;
+
+    //进攻区域（采用 1内切 2将球做入禁区 4利用侧翼  8 中路远射）
+    optional int32 attackRegion = 2;
+
+    //进攻倾向( 1-5)
+    optional int32 attackTrend = 3;
+
+    //进攻节奏(1-5)
+    optional int32 attackRhythm = 4;
+
+    //防守区域（1较深  2适中1  3适中2  4前压1 5前压2）
+    optional int32 defendRegion = 5;
+
+    //防守策略（1-5）
+    optional int32 defendStrategy = 6;
+
+    //侵略强度（1低  2中  3高）
+    optional int32 aggressIntension = 7;
+
+    //组织方式（1左路  2中路 4右路）
+    optional int32 organizationForm = 8;
+
+    //传球方式（1-5）
+    optional int32 passingTypes = 9;
+
+    //比赛配合（1球星 2均衡  3团队）
+    optional int32 cooperate = 10;
+}

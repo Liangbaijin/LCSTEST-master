@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+
+message LoginData {
+	// 已开启的活动type
+	repeated int32 activityType = 1;
+	// 注册时间
+	optional int64 registTime = 2;
+}

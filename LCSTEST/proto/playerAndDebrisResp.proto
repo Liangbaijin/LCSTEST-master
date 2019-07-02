@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+import "gamePlayerInstance.proto";
+import "gameUserDebris.proto";
+
+message PlayerAndDebrisRespVo {
+	//球员信息
+	optional GamePlayerInstance playerRespVo = 1;
+	
+	//球员碎片信息
+	optional GameUserDebris debrisRespVo = 2;
+}

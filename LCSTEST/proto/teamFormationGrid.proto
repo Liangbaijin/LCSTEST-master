@@ -1,0 +1,43 @@
+syntax = "proto2";
+
+
+//用户球员信息
+message TeamFormationGrid{
+
+	//格子主键id
+	optional int32 id = 1;
+
+	//格子1
+    optional int32 grid1 = 2;
+
+	//格子2
+    optional int32 grid2 = 3;
+
+	//格子3
+    optional int32 grid3 = 4;
+
+	//格子4
+    optional int32 grid4 = 5;
+
+	//格子5
+    optional int32 grid5 = 6;
+
+	//格子6
+    optional int32 grid6 = 7;
+
+	//格子7
+    optional int32 grid7 = 8;
+
+	//格子8
+    optional int32 grid8 = 9;
+
+	//格子9
+    optional int32 grid9 = 10;
+
+	//格子10
+    optional int32 grid10 = 11;
+
+	//格子11
+    optional int32 grid11 = 12;
+	
+}

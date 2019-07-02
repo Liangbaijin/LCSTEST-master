@@ -1,0 +1,56 @@
+syntax = "proto2";
+
+//竞猜项
+message QuizItem {
+	required int32 id = 1;
+	required string homeName = 2;	
+	required string visitingName = 3;
+	optional int32 letTheBall = 4;
+	optional int32 homeScore = 5;
+	optional int32 visitingScore = 6;
+	required string matchStartTime = 7;
+	//比分设定开始时间
+	required string startTime = 8;
+	//比分设定结束时间
+	required string endTime = 9;
+	//主队赔率
+	optional string homeWin = 10;
+	//客队赔率
+	optional string visitingWin = 11;
+	//平局赔率
+	optional string draw = 12;
+	//比赛结果是否已录入 0 未录入 1-6对应各个位置的结果
+	required int32 matchStatus = 13;
+	//联赛名字
+	required string leagueName = 14;
+	//主队排名
+	optional int32 homeRank = 15;
+	//客队排名
+	optional int32 visitingRank = 16;
+	//第四个位置赢赔率
+	optional string fourWin = 17;
+	//第五个位置赢赔率
+	optional string fiveWin = 18;
+	//第六个位置赢赔率
+	optional string sixWin = 19;
+	//1猜胜负 2猜进球 3 猜红黄牌数 4 猜进球单双 5 猜是否有点球 6猜有无红黄牌
+	optional int32 type = 20;
+	//2猜进球（1全 2上3下） 3猜红黄牌（1红2黄） 4猜单双（1全2上3下） 5加时点球（1加时2点球）6有无红黄牌（1红牌 2黄牌）
+	optional int32 minType = 21;
+	
+	//主队胜投注数
+	required int32 homeNum = 22;
+	//平局投注数
+	required int32 drawNum = 23;
+	//客队胜投注数
+	optional int32 visitingNum = 24;
+	//第4个位置押注数
+	optional int32 fourNum = 25;
+	//第5个位置押注数
+	optional int32 fiveNum = 26;
+	//第6个位置押注数
+	optional int32 sixNum = 27;
+  
+	//奖励领取状态 0未结算 1未中奖 2未领取 3已领取 
+	optional int32 awardStatus = 28;
+}

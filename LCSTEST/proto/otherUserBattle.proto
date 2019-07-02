@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+import "gamePlayerInstance.proto";
+
+//他人的阵容
+message OtherUserBattle {
+	//各个位置的球员信息（升序排序）
+	repeated GamePlayerInstance gamePlayerInstanceList = 1;
+	//阵形id
+	required int32 formationId = 2;
+	//阵形战力
+	required int32 battleArrayZhanli = 3;
+}

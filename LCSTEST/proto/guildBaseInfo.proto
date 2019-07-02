@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+//公会基本信息
+message GuildBaseInfo {
+    //公会id
+    required int32 id = 1;
+    //公会名字
+    required string name = 2;
+    //公会等级
+    required int32 level = 3;
+    //会徽
+    required int32 label = 4;
+    //公告
+    required string title = 5;
+    //申请条件：俱乐部（0为无限制）
+    required int32 applyClub = 6;
+    //申请条件：经理人等级（0为无限制）
+    required int32 applyLevel = 7;
+    //申请条件：VIP等级（0为无限制）
+    required int32 applyVip = 8;
+    //当前成员数
+    required int32 nowMember = 9;
+    //成员数上限
+    required int32 maxMember = 10;
+}

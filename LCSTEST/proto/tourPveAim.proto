@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+// 巡回赛挑战目标
+message TourPveAim{
+
+	//格子数
+	optional int32 grid = 1;
+	
+	//正在比赛id-----gameTourPveJourney中的id
+	optional int32 id = 2;
+	
+	//联赛id
+	optional int32 tourId = 3;
+	
+}

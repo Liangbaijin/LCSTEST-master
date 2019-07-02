@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+import "propResp.proto";
+
+// 结算结果-传奇挑战赛
+message SettleLegendChallenge{
+
+	//挑战结果 1成功 2失败
+	required int32 result = 1;
+	//条件1达成情况 1达成 2未达成
+	required int32 condition1 = 2;
+	//条件2达成情况
+	required int32 condition2 = 3;
+	//条件3达成情况
+	required int32 condition3 = 4;
+	//挑战获得的道具
+	repeated PropRespVo propRespVoList = 5;
+	//荣誉奖杯总数
+	required int32 cup = 6;
+	//当前轮次
+	required int32 round = 7;
+	//当前记录点
+	required int32 checkpoint = 8;
+	//历史最高轮次
+	required int32 max = 9;
+	
+}

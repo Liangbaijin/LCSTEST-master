@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+//球员特训结构
+message PlayerTrain {
+	//属性id 1-12
+	required int32 attrId = 1;
+	//等级
+	required int32 level = 2;
+	//状态 0：未在特训；1：特训中
+	required int32 status = 3;
+	//结束时间
+	optional int64 finishTime = 4;
+}

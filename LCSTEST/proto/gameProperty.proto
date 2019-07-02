@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+message GameProperty {
+	//道具id
+	optional int32 propertyId = 1;
+	
+	//道具num
+	optional int32 num = 2;
+}

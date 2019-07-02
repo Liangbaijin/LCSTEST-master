@@ -1,0 +1,90 @@
+syntax = "proto2";
+
+//用户球员信息
+message TeamPlayerFormation{
+
+	//阵容id
+	optional int32 id = 1;
+
+	//阵型名称
+	optional string formatName = 2;
+
+	//多套阵容 1阵容1 2阵容2 3阵容3
+	optional int32 type = 3;
+
+	//球员人数
+	optional int32 playerNum = 4;
+
+	//格子主键id
+	optional int32 gridId = 5;
+
+	//位置1球员唯一id
+	optional int32 position1 = 6;
+
+	//位置2球员唯一id
+	optional int32 position2 = 7;
+
+	//位置3球员唯一id
+	optional int32 position3 = 8;
+
+	//位置4球员唯一id
+	optional int32 position4 = 9;
+
+	//位置5球员唯一id
+	optional int32 position5 = 10;
+
+	//位置6球员唯一id
+	optional int32 position6 = 11;
+
+	//位置7球员唯一id
+	optional int32 position7 = 12;
+
+	//位置8球员唯一id
+	optional int32 position8 = 13;
+
+	//位置9球员唯一id
+	optional int32 position9 = 14;
+
+	//位置10球员唯一id
+	optional int32 position10 = 15;
+
+	//位置11球员唯一id
+	optional int32 position11 = 16;
+
+	//位置12球员唯一id
+	optional int32 position12 = 17;
+
+	//位置13球员唯一id
+	optional int32 position13 = 18;
+
+	//位置14球员唯一id
+	optional int32 position14 = 19;
+
+	//位置15球员唯一id
+	optional int32 position15 = 20;
+
+	//位置16球员唯一id
+	optional int32 position16 = 21;
+
+	//位置17球员唯一id
+	optional int32 position17 = 22;
+
+	//位置18球员唯一id
+	optional int32 position18 = 23;
+
+	//位置19球员唯一id
+	optional int32 position19 = 24;
+
+	//位置20球员唯一id
+	optional int32 position20 = 25;
+
+	//位置21球员唯一id
+	optional int32 position21 = 26;
+
+	//位置22球员唯一id
+	optional int32 position22 = 27;
+
+	//位置23球员唯一id
+	optional int32 position23 = 28;
+	
+}

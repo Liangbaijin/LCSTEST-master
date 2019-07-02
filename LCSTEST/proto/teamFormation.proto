@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+import "teamPlayerFormation.proto";
+import "teamFormationGrid.proto";
+
+// 整合球员的阵容
+message TeamFormation{
+
+	required TeamPlayerFormation playerFormation = 1;
+
+	required TeamFormationGrid formationGrid = 2;
+
+}

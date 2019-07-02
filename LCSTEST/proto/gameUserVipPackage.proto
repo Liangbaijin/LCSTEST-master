@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+//vip礼包状态
+message GameUserVipPackage {
+	//common_vip_package中的id
+	required int32 id = 1;
+	//购买状态 0未购买  1已购买
+	required int32 status = 2;
+}

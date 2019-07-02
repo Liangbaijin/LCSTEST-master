@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+import "propResp.proto";
+import "gameTeamInfo.proto";
+
+message TeamInfoAndPropListRespVo {
+	//道具集合
+	repeated PropRespVo propRespVo = 1;
+	//经理人信息
+	optional GameTeamInfo gameTeamInfo = 2;
+}
+

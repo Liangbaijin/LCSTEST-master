@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+import "gameUserEquipment.proto";
+import "gameUserDebris.proto";
+
+message EquipAndDebrisRespVo {
+	//装备
+	optional GameUserEquipment gameUserEquipment = 1;
+	
+	//装备碎片信息
+	optional GameUserDebris debrisRespVo = 2;
+}

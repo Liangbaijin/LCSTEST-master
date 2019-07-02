@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+
+message GS2C_ERRORCODE{
+	//错误code
+	required int32 code = 1;
+	//请求的opcode
+	required int32 opCode = 2;
+	//Message
+	required string message = 3;
+}
+
+message LS2GS_ERRORCODE{
+	required string uid = 1;
+	required GS2C_ERRORCODE resp = 2;
+}
